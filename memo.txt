@@ -1,0 +1,16 @@
+//var default_url = "https://only.m.tmall.com/shop/shop_auction_search.do?&sort=default&p=2&from=h5&shop_id=60129786&ajson=1&_tm_source=tmallsearch";
+
+
+{%for item in items.list%}
+<a href="/tb/{{item.item_id}}" class="tm-shop-product-item">
+    <div class="ctn">
+        <div class="img-ctn">
+            <img class="ui-loading-img" src="{{item.item_thumb}}" alt="{{item.item_title}}">
+        </div>
+        <div class="detail">
+            <div class="name">{{item.item_title}}</div>
+            <span class="price">{{item.item_price}}</span>
+        </div>
+    </div>
+</a>
+{%endfor%}

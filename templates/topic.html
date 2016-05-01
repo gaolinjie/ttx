@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="dns-prefetch" href="//res.wx.qq.com">
+  <link rel="dns-prefetch" href="//mmbiz.qpic.cn">
+  <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon22c41b.ico">
+  <title>{{topic.title}}</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/page_mp_article_improve2a7a3f.css">
+  <style></style>
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2a7a3f.css">
+  <![endif]-->
+  <script type="text/javascript">
+    document.domain = "qq.com";
+  </script>
+</head>
+
+<body id="activity-detail" class="zh_CN mm_appmsg" ontouchstart="">
+  <div id="js_article" class="rich_media">
+    <div id="js_top_ad_area" class="top_banner">
+    </div>
+
+    <div class="rich_media_inner">
+      <div id="page-content">
+        <div id="img-content" class="rich_media_area_primary">
+          <h2 class="rich_media_title" id="activity-name">
+            {{topic.title}}
+          </h2>
+
+          <div class="rich_media_meta_list">
+            <em id="post-date" class="rich_media_meta rich_media_meta_text">2016-03-13</em>
+            <em class="rich_media_meta rich_media_meta_text">七毛&nbsp;&nbsp;訂阅▶▶</em>
+            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">陈宗鹤先生</a>
+            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">陈宗鹤先生</span>
+          </div>
+
+          {{topic.content|mp_content_process}}
+
+          <div style="position:static;box-sizing: border-box;">
+              <div style="margin:5px auto;border: 3px solid rgb(255, 129, 36); padding: 5px;">
+                <div style="border: 1px solid rgb(255, 158, 87); padding: 15px; text-align: center; color: inherit;">
+                  <p style="color:inherit;">
+                    <strong style="color:inherit">
+                      <a href="{{ad.ad_link}}" style="color:inherit; font-size:16px">
+                        {{ad.ad_text}}
+                      </a>
+                    </strong>
+                  </p>
+                </div>
+              </div>
+              <div style="display: block; width: 0; height: 0; clear: both;"></div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/zepto.min.js"></script>
+    <script src="/static/js/lazyload.min.js"></script>
+    <script src="/static/js/topic.js"></script>
+
+  </body>
+</html>

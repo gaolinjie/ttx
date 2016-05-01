@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="ks-webkit601 ks-webkit">
+
+  <head>
+    <meta charset="utf-8">
+    <link href="//g.alicdn.com/mui/global/1.2.35/file/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <meta name="aplus-terminal" content="1">
+    <meta name="apple-mobile-web-app-title" content="TMALL">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no">
+    <meta name="description" content="天猫店铺,品类齐全，欢迎选购！">
+    <title>
+      {{shop.shop_name}}
+    </title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+    <style>
+      .mui-bottom-smart-banner{ width: 100%; position: fixed; bottom:0; left:0;
+      z-index: 99999; font-size:0; } .mui-bottom-smart-banner img{ width:100%;
+      opacity: 0.95; } .mui-bottom-smart-banner a{ display:block } .mui-bottom-m-sb-btn-close{
+      position: absolute; right:0; top:0; background: rgba(0,0,0,0.2) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3NzhFMkJFNTMwM0ExMUU0OERFOUVCNDEzMUJCNTQ1RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3NzhFMkJFNjMwM0ExMUU0OERFOUVCNDEzMUJCNTQ1RCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc3OEUyQkUzMzAzQTExRTQ4REU5RUI0MTMxQkI1NDVEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjc3OEUyQkU0MzAzQTExRTQ4REU5RUI0MTMxQkI1NDVEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+NmtjogAAAJtJREFUeNqsk1sSABEMBOn7Oa0D2ldtldolEolvuomZ3Fqr6Vklxa6bSweu0fCLzef2NRL+viAFSn7j5rPBIxn+JYONO5JpUJgcsEjEFCIc1EiWEWdxO0mi6g+KEYwk6nLms8nWj0yW5mNISrHCrYIqvMYt6Gdu6gmbOVdLcJRIJcFTIo0EB1wlwQlfSgiAixKC4FMJgfCh5BBgAOelLtiutNSeAAAAAElFTkSuQmCC")
+      15px 5px no-repeat; width: 30px; height: 30px; background-size: 12px; cursor:
+      pointer; border-radius: 0 0 0 30px; }
+    </style>
+    <link rel="stylesheet" href="/static/js/dropload/dist/dropload.css">
+  </head>
+
+  <body class="NA-app has-no-smartbanner">
+    <a href="/" class="to-shop-mp">
+      &nbsp;
+    </a>
+    <div id="mallPage" class="mui-page-cont mui-page-in-biz mui-global-biz-shop  mui-global-detector-ios mui-global-detector-ios8 mui-global-detector-phone mui-global-detector-iphone">
+      <div id="header" class="headerBizHack">
+        <div id="J_GlobalNav" class="mui-header-global-nav">
+        </div>
+        <h1 class="mui-header-title">
+          {{shop.shop_name}}
+        </h1>
+      </div>
+      <div id="content">
+        <section class="tm-shop-new-mdv tm-shop-new">
+          <section class="day" data-uuid="{{shop.shop_uuid}}">
+            <div class="items">
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+    <div id="J_BottomSmartBanner" class="mui-bottom-smart-banner" style="overflow: hidden; bottom: 0px;">
+      <a id="J_BottomSmartBannerLink">
+        <img src="//img.alicdn.com/tps/i3/TB1fM7.LVXXXXX5XFXXAbaqGpXX-667-136.png">
+      </a>
+      <div class="mui-bottom-m-sb-btn-close" id="J_BottomSmartBannerClose">
+      </div>
+    </div>
+
+    <script src="/static/js/zepto.min.js"></script>
+    <script src="/static/js/dropload/dist/dropload.min.js"></script>
+    <script>
+      $(function(){
+    var shop_uuid = $('.day').attr('data-uuid');
+    var pageNum = 1;
+
+    // dropload
+    $('.day').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: '/api/shop/'+shop_uuid+'?p='+pageNum,
+                dataType: 'json',
+                success: function(data){
+
+                    var result = '';
+                    for(var i = 0; i < data.list.length; i++){
+                        result += '<a href="/tb/' + data.list[i].item_uuid + '" class="tm-shop-product-item">'
+                                + '<div class="ctn">'
+                                + '<div class="img-ctn">'
+                                + '<img class="ui-loading-img" src="' + data.list[i].item_thumb + '_240x240.jpg" alt="' + data.list[i].item_title + '">'
+                                + '</div>'
+                                + '<div class="detail">'
+                                + '<div class="name">'+ data.list[i].item_title +'</div>'
+                                + '<span class="price">' + data.list[i].item_price + '</span>'
+                                + '</div></div>'
+                                + '</a>';
+                    }
+
+                        $('.items').append(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+
+                        pageNum++;
+                        if (pageNum > data.page.pages) {
+                            me.lock();
+                            me.noData();
+                        }
+
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+</script>
+  </body>
+
+</html>
