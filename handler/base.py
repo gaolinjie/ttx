@@ -55,20 +55,12 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.user_model
 
     @property
-    def topic_model(self):
-        return self.application.topic_model
+    def post_model(self):
+        return self.application.post_model
 
     @property
-    def ad_model(self):
-        return self.application.ad_model
-
-    @property
-    def taobao_model(self):
-        return self.application.taobao_model
-
-    @property
-    def shop_model(self):
-        return self.application.shop_model
+    def item_model(self):
+        return self.application.item_model
 
 '''
     @property

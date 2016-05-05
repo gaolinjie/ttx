@@ -32,74 +32,46 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `topic`
+--  Table structure for `post`
 -- ----------------------------
-DROP TABLE IF EXISTS `topic`;
-CREATE TABLE `topic` (
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `topic_uuid` text,
-  `ad_uuid` text,
   `title` text,
+  `subtitle` text,
+  `thumb` text,
+  `link` text,
+  `dlink` text,
+  `post_type` text,
+  `source` text,
+  `price` text,
+  `vendor` text,
+  `author_name` text,
+  `up_num` text,
+  `down_num` text,
+  `reply_num` text,
+  `follow_num` text,
   `content` longtext,
   `author_id` text,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Table structure for `ad`
--- ----------------------------
-DROP TABLE IF EXISTS `ad`;
-CREATE TABLE `ad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ad_uuid` text,
-  `ad_type` text,
-  `ad_name` text,
-  `ad_text` text,
-  `ad_link` text,
-  `ad_img` text,
-  `author_id` text,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
---  Table structure for `shop`
--- ----------------------------
-DROP TABLE IF EXISTS `shop`;
-CREATE TABLE `shop` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_num` int(11) DEFAULT 0,
-  `shop_uuid` text,
-  `shop_type` text,
-  `shop_name` text,
-  `shop_link` text,
-  `shop_thumb` text,
-  `tao_code` text,
-  `author_id` text,
-  `updated` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
---  Table structure for `taobao`
+--  Table structure for `item`
 -- ----------------------------
-DROP TABLE IF EXISTS `taobao`;
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `taobao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_num` int(11) DEFAULT 0,
-  `shop_uuid` text,
-  `item_uuid` text,
   `item_type` text,
   `item_id` text,
   `item_title` text,
   `item_link` text,
   `item_thumb` text,
   `item_price` text,
-  `tao_code` text,
-  `src_code` longtext,
   `author_id` text,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
