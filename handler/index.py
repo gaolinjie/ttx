@@ -139,13 +139,13 @@ class AddAdHandler(BaseHandler):
                     "success": 1,
                 }))
 
-class TopicHandler(BaseHandler):
-    def get(self, topic_uuid, template_variables = {}):
-        topic = self.topic_model.get_topic_by_topic_uuid(topic_uuid)
-        template_variables["topic"] = topic
-        ad = self.ad_model.get_ad_by_ad_uuid(topic.ad_uuid)
-        template_variables["ad"] = ad
-        self.render("topic.html", **template_variables)
+class PostHandler(BaseHandler):
+    def get(self, post_id, template_variables = {}):
+        print post_id
+        post = self.post_model.get_post_by_id(post_id)
+        print post.title
+        template_variables["post"] = post
+        self.render("post.html", **template_variables)
 
 class MyTabaosHandler(BaseHandler):
     def get(self, template_variables = {}):

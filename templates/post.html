@@ -10,7 +10,7 @@
   <link rel="dns-prefetch" href="//res.wx.qq.com">
   <link rel="dns-prefetch" href="//mmbiz.qpic.cn">
   <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon22c41b.ico">
-  <title>{{topic.title}}</title>
+  <title>{{post.title}}</title>
   <link rel="stylesheet" type="text/css" href="/static/css/page_mp_article_improve2a7a3f.css">
   <style></style>
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
       <div id="page-content">
         <div id="img-content" class="rich_media_area_primary">
           <h2 class="rich_media_title" id="activity-name">
-            {{topic.title}}
+            {{post.title}}
           </h2>
 
           <div class="rich_media_meta_list">
@@ -40,23 +40,7 @@
             <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">陈宗鹤先生</span>
           </div>
 
-          {{topic.content|mp_content_process}}
-
-          <div style="position:static;box-sizing: border-box;">
-              <div style="margin:5px auto;border: 3px solid rgb(255, 129, 36); padding: 5px;">
-                <div style="border: 1px solid rgb(255, 158, 87); padding: 15px; text-align: center; color: inherit;">
-                  <p style="color:inherit;">
-                    <strong style="color:inherit">
-                      <a href="{{ad.ad_link}}" style="color:inherit; font-size:16px">
-                        {{ad.ad_text}}
-                      </a>
-                    </strong>
-                  </p>
-                </div>
-              </div>
-              <div style="display: block; width: 0; height: 0; clear: both;"></div>
-          </div>
-
+          {{post.content|mp_content_process}}
 
           </div>
         </div>
@@ -65,7 +49,7 @@
 
     <script src="/static/js/zepto.min.js"></script>
     <script src="/static/js/lazyload.min.js"></script>
-    <script src="/static/js/topic.js"></script>
+    <script src="/static/js/post.js"></script>
 
   </body>
 </html>

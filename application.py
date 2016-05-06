@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 #
-# Copyright 2016 webeta
+# Copyright 2016 ttx
 
 # cat /etc/mime.types
 # application/octet-stream    crx
@@ -28,14 +28,14 @@ from jinja2 import Environment, FileSystemLoader
 
 define("port", default = 80, help = "run on the given port", type = int)
 define("mysql_host", default = "localhost", help = "community database host")
-define("mysql_database", default = "webeta", help = "community database name")
-define("mysql_user", default = "webeta", help = "community database user")
-define("mysql_password", default = "webeta", help = "community database password")
+define("mysql_database", default = "ttx", help = "community database name")
+define("mysql_user", default = "ttx", help = "community database user")
+define("mysql_password", default = "ttx", help = "community database password")
 
 class Application(tornado.web.Application):
     def __init__(self):
         settings = dict(
-            blog_title = u"webeta",
+            blog_title = u"ttx",
             template_path = os.path.join(os.path.dirname(__file__), "templates"),
             static_path = os.path.join(os.path.dirname(__file__), "static"),
             root_path = os.path.join(os.path.dirname(__file__), "/"),
@@ -57,7 +57,7 @@ class Application(tornado.web.Application):
             (r"/", handler.index.IndexHandler),
             (r"/weixin", handler.index.WeixinHandler),
             (r"/shareit", handler.index.ShareItHandler),
-            (r"/t/(.*)", handler.index.TopicHandler),
+            (r"/p/(\d+)", handler.index.PostHandler),
             (r"/addad", handler.index.AddAdHandler),
             (r"/myshares", handler.index.MySharesHandler),
             (r"/myads", handler.index.MyAdsHandler),

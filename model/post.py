@@ -14,8 +14,8 @@ class PostModel(Query):
     def add_new_post(self, post_info):
         return self.data(post_info).add()
 
-    def get_post_by_post_uuid(self, post_uuid):
-        where = "post.post_uuid = '%s'" % post_uuid
+    def get_post_by_id(self, post_id):
+        where = "post.id = %s" % post_id
         return self.where(where).find()
 
     def update_post_by_post_uuid(self, uuid, post_info):

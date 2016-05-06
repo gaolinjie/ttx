@@ -31,37 +31,24 @@ class TtxSipder(CrawlSpider) :
         print '333333333333333333333'
 
     def parse_page(self, response) :
-        '''
-        doc=pyq('http://m.smzdm.com/p/6115909?from=search')
-        print doc
-        print response
-        '''
-        print response.status
-        #print response.body
-        #print response.meta
-
-
-    	sel = HtmlXPathSelector(text=response.body)
-        topic = sel.xpath('//article')
-        print topic[0]
-
         item = TtxspiderItem()
-        item['title']  = topic.xpath('./h1/em/text()').extract()
-        print item['title']
-        item['subtitle']  = topic.xpath('./h1/span[@class="red"]/text()').extract()
-        item['intro']  = topic.xpath('./div[@class="news_content"]/p/text()').extract()
-        item['content']  = topic.xpath('./div[@class="news_content"]/p').extract()
-        item['img']  = topic.xpath('./div[@class="news_content"]/div[@class="article_picwrap"]/a[@class="picLeft"]/img/@src').extract()
+        item['title']  = response.xpath('//h1/em/text()').extract()
+        item['subtitle']  = response.xpath('//h1/em/span[@class="red"]/text()').extract()
+        item['intro']  = response.xpath('//div[@class="inner-block"]/p[1]/text()').extract()
+        item['content']  = response.xpath('//div[@class="inner-block"]').extract()
+        item['img']  = response.xpath('//a[@class="pic-Box"]/img/@src').extract()
         item['link']  = response.url
-        item['dlink']  = topic.xpath('./div[@class="news_content"]/div[@class="article_picwrap"]/div[@class="buy"]/a/@href').extract()
-        item['tag']  = topic.xpath('./div[@class="article_meta"]/span[@class="lFloat"]/text()').extract()
-        item['vendor']  = topic.xpath('./div[@class="news_content"]/div[@class="article_picwrap"]/a[@class="mall"]/text()').extract()
-        item['author_name'] = topic.xpath('./div[@class="article_meta"]/div[@class="recommend"]/text()').extract()
-        item['up_num'] = sel.xpath('//div[@class="score_rateBox"]/span[@class="red"]/text()').extract()
-        item['down_num'] = sel.xpath('//div[@class="score_rateBox"]/span[@class="grey"]/text()').extract()
-        item['reply_num'] = sel.xpath('//div[@class="leftLayer"]/em[@class="commentNum"]/text()').extract()
-        item['follow_num'] = sel.xpath('//div[@class="leftLayer"]/a[@class="fav"]/em/text()').extract()
-        item['created'] = topic.xpath('./div[@class="article_meta"]/span[@class="lrTime"]/text()').extract()
-        print item['created']
+        item['dlink']  = response.xpath('//div[@class="buy"]/a/@href').extract()
+        item['tag']  = response.xpath('//span[@class="tags"]/text()').extract()
+        item['vendor']  = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][2]/span[1]/a/text()').extract()
+        item['up_num'] = response.xpath('//div[@class="score_rate"]/span[@class="red"]/text()').extract()
+        item['down_num'] = response.xpath('//div[@class="score_rate"]/span[@class="grey"][2]/text()').extract()
+        item['reply_num'] = response.xpath('//em[@class="commentNum"]/text()').extract()
+        item['follow_num'] = response.xpath('//a[@class="fav"]/em/text()').extract()
+
+        item['author_name'] = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][1]/span[1]/text()').extract()
+        item['created'] = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][1]/span[2]/text()').extract()
+        
+        print item['author_name'][0]
 
         return item
