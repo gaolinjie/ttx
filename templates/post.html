@@ -12,6 +12,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon22c41b.ico">
   <title>{{post.title}}</title>
   <link rel="stylesheet" type="text/css" href="/static/css/page_mp_article_improve2a7a3f.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
   <style></style>
   <!--[if lt IE 9]>
   <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2a7a3f.css">
@@ -34,10 +35,10 @@
           </h2>
 
           <div class="rich_media_meta_list">
-            <em id="post-date" class="rich_media_meta rich_media_meta_text">2016-03-13</em>
+            <em id="post-date" class="rich_media_meta rich_media_meta_text">{{post.created | pretty_date}}</em>
             <em class="rich_media_meta rich_media_meta_text">七毛&nbsp;&nbsp;訂阅▶▶</em>
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">陈宗鹤先生</a>
-            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">陈宗鹤先生</span>
+            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">白菜朋友圈</a>
+            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">白菜朋友圈</span>
           </div>
 
           {{post.content|mp_content_process}}
