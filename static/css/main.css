@@ -8,6 +8,11 @@ p {
     word-break: break-all;
 }
 
+.title_price {
+	font-weight: bold;
+    line-height: 25px;
+}
+
 .siteWrap {
     width: 100%;
     clear: both;
