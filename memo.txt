@@ -22,3 +22,20 @@ http://djaa.cn/cm_details.php?shopName=%E6%89%8B%E6%9C%BA%E5%A4%A9%E7%8C%AB%E5%9
 
 
 http://djaa.cn/cm_details.php?shopUrl=https://detail.tmall.com/item.htm?id=530867977277&shop_type=tmall&Advertisement=0&small_shop_type=cm_details
+
+
+https://taoquan.taobao.com/coupon/unify_apply_result_tmall.htm?seller_id=683460491&success=false&need_check=false&need_ok=true&activity_id=d4672c676a664ee691bcd268c9511daa&apply_source=daily&is_collina_check=true&ok_str=%B3%C9%B5%FB%D4%CB%B6%AF%BB%A7%CD%E2%D7%A8%D3%AA%B5%EA+30.00%D4%AA%C9%CC%C6%B7%D3%C5%BB%DD%84%BB
+
+http://djaa.cn/iphone_qiange_if.php?shopName=%E6%89%8B%E6%9C%BA%E4%BC%98%E6%83%A0%E5%88%B8&shopUrl=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D683460491%26activity_id%3Dd4672c676a664ee691bcd268c9511daa
+
+http://djaa.cn/iphone_qiange_if.php?shopUrl=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D683460491%26activity_id%3Dd4672c676a664ee691bcd268c9511daa
+
+
+color: #f04848;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;

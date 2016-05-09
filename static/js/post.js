@@ -14,4 +14,11 @@ $(document).ready(function() {
     });
 
     $("img").lazyload();
+
+    $("a").each(function() {
+        var text = $(this).text();
+        if (text.indexOf("优惠券")!=-1 || text.indexOf("优惠劵")!=-1 || text.indexOf("店铺券")!=-1) {
+            $(this).css({"color":"#f04848", "background-color":"#f5f5f5","border-radius":"2px","text-align":"center", "padding": "0 2px"});
+        }
+    });
 });
