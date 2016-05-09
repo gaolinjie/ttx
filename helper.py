@@ -158,6 +158,7 @@ class Filters():
         content = re.sub(r'http://ym.zdmimg.com/', r'http://www.zorhand.com/img?url=http://ym.zdmimg.com/', content)
 
         content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl=\1', content)
+        content = re.sub(r'http://www.smzdm.com/p/([0-9]{7})/', r'/p/\1?source=smzdm', content)
 
         return content
 

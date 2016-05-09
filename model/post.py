@@ -18,6 +18,10 @@ class PostModel(Query):
         where = "post.id = %s" % post_id
         return self.where(where).find()
 
+    def get_post_by_pid_and_source(self, pid, source):
+        where = "post.pid = %s AND post.source = '%s'" % (pid, source)
+        return self.where(where).find()
+
     def update_post_by_post_uuid(self, uuid, post_info):
         where = "post.post_uuid = %s" % post_uuid
         return self.where(where).data(post_info).save()

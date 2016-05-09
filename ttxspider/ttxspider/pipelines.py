@@ -58,14 +58,13 @@ class TtxspiderPipeline(object):
 				print '重复的条目已经达到上限，关闭爬虫'
 				os._exit(0)
 		else:
-			file_name = "%s" % uuid.uuid1() + ".jpg"
-			#ret, info = bucket.fetch(item['img'][0], bucket_name, file_name)
-			#file_name = "http://7xii5h.com1.z0.glb.clouddn.com/" + file_name
 			created = time.strftime('%Y-%m-%d %H:%M:%S')
 			print '4444444444444444444444444'
+			if  len(item['content']) == 0:
+				item['content'].append("")
 			tx.execute(\
-				"insert into post (title, subtitle, content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
-				(item['title'][0], item['subtitle'][0], item['content'][0], "l", file_name, item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], item['author_name'], item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))
+				"insert into post (pid, title, subtitle, content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
+				(item['pid'], item['title'][0], item['subtitle'][0], item['content'][0], "l", item['img'][0], item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], item['author_name'], item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))
 		#log.msg("Item stored in db: %s" % item, level=log.DEBUG)
 
 	def handle_error(self, e):

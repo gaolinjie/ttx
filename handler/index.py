@@ -141,9 +141,13 @@ class AddAdHandler(BaseHandler):
 
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
-        print post_id
-        post = self.post_model.get_post_by_id(post_id)
-        print post.title
+        source = self.get_argument("source", "")
+        print source
+        if (source == ""):
+            post = self.post_model.get_post_by_id(post_id)
+        else:
+            print post_id
+            post = self.post_model.get_post_by_pid_and_source(post_id, source)
         template_variables["post"] = post
         self.render("post.html", **template_variables)
 

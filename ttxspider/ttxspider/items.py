@@ -10,6 +10,7 @@ import scrapy
 
 class TtxspiderItem(scrapy.Item):
     # define the fields for your item here like:
+    pid = scrapy.Field()
     title = scrapy.Field()
     subtitle = scrapy.Field()
     img = scrapy.Field()
