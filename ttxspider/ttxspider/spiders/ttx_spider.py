@@ -44,6 +44,10 @@ class TtxSipder(CrawlSpider) :
         item['subtitle']  = response.xpath('//h1/em/span[@class="red"]/text()').extract()
         item['intro']  = response.xpath('//div[@class="inner-block"]/p[1]/text()').extract()
         item['content']  = response.xpath('//div[@class="inner-block"]').extract()
+        if len(item['content']) == 0:
+            print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+            item['content'] = response.xpath('//div[@class="baoliao-block"]').extract()
+            print item['content'][0]
         #top_box = response.xpath('//div[@class="article-top-box"]//a/@href').extract()
         #print top_box[0] + "ddddddddd"
         item['img']  = response.xpath('//a[@class="pic-Box"]/img/@src').extract()

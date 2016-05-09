@@ -62,6 +62,7 @@ class TtxspiderPipeline(object):
 			print '4444444444444444444444444'
 			if  len(item['content']) == 0:
 				item['content'].append("")
+				
 			tx.execute(\
 				"insert into post (pid, title, subtitle, content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
 				(item['pid'], item['title'][0], item['subtitle'][0], item['content'][0], "l", item['img'][0], item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], item['author_name'], item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))
