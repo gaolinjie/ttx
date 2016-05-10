@@ -34,3 +34,7 @@ class PostModel(Query):
         where = "post.author_id = '%s'" % author_id
         order = "post.created DESC, post.id DESC"
         return self.where(where).order(order).pages(current_page = current_page, list_rows = num)
+
+    def get_all_posts(self, num = 10, current_page = 1):
+        order = "post.created DESC, post.id DESC"
+        return self.order(order).pages(current_page = current_page, list_rows = num)

@@ -151,6 +151,12 @@ class PostHandler(BaseHandler):
         template_variables["post"] = post
         self.render("post.html", **template_variables)
 
+class ListHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        posts = self.post_model.get_all_posts()
+        template_variables["posts"] = posts
+        self.render("list.html", **template_variables)
+
 class MyTabaosHandler(BaseHandler):
     def get(self, template_variables = {}):
         p = int(self.get_argument("p", "1"))

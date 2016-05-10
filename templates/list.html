@@ -10,9 +10,9 @@
   <link rel="dns-prefetch" href="//res.wx.qq.com">
   <link rel="dns-prefetch" href="//mmbiz.qpic.cn">
   <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon22c41b.ico">
-  <title>{{post.title}} {{post.subtitle}}</title>
+  <title>白菜朋友圈</title>
   <link rel="stylesheet" type="text/css" href="/static/css/page_mp_article_improve2a7a3f.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/post.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/list.css">
   <style></style>
   <!--[if lt IE 9]>
   <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2a7a3f.css">
@@ -30,20 +30,23 @@
     <div class="rich_media_inner">
       <div id="page-content">
         <div id="img-content" class="rich_media_area_primary">
-          <h2 class="rich_media_title" id="activity-name">
-            {{post.title}} <span class="title_price red">{{post.subtitle}}</span>
-          </h2>
+          
+        <ul class="list list_preferential">
+          {%for post in posts.list%}
+          <li>
+            <a href="/p/{{post.id}}" target="_blank" class="hidden openApp">
+            <div class="image_wrap">
+              <div class="image"><img src="{{post.thumb|mp_content_process}}" alt="深夜白菜特价包邮 USB风扇、雕花小夜灯、车载充电器等"></div>
+            </div>
+            <address><span>{{post.created|pretty_date}}</span>{{post.vendor}}</address>
+            <h2>{{post.title}}</h2>
+            <div class="tips"><em>{{post.subtitle}}</em></div>
+            </a>
+          </li>
+          {%endfor%}
+        </ul>
 
-          <div class="rich_media_meta_list">
-            <em id="post-date" class="rich_media_meta rich_media_meta_text">{{post.created | pretty_date}}</em>
-            <em class="rich_media_meta rich_media_meta_text">&nbsp;&nbsp;关注▶▶</em>
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">白菜朋友圈</a>
-            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">白菜朋友圈</span>
-          </div>
 
-          {{post.content|mp_content_process}}
-
-          <div align="center"><img src="{{post.thumb|mp_content_process}}" /></div> 
           </div>
         </div>
       </div>
