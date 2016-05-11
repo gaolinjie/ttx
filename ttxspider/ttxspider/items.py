@@ -27,7 +27,4 @@ class TtxspiderItem(scrapy.Item):
     reply_num = scrapy.Field()
     follow_num = scrapy.Field()
     created = scrapy.Field()
-    #vote = scrapy.Field()
-    #star = scrapy.Field()
-    #comment = scrapy.Field()
-    #user = scrapy.Field()
+    post_type = scrapy.Field()

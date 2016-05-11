@@ -14,7 +14,6 @@ from pyquery import PyQuery as pyq
 smzdm_pattern = re.compile(r'http://www.smzdm.com/p/([0-9]{7})')
 
 class TtxSipder(CrawlSpider) :
-    #print '11111111111111111111111111111'
     name = "ttxspider"
     allowed_domains = ["www.smzdm.com"]
     start_urls = [
@@ -22,20 +21,16 @@ class TtxSipder(CrawlSpider) :
     ]
 
     def parse(self, response) :
-        #print '2222222222222222222222'
     	sel = Selector(response)
 
         urls = sel.xpath('//div[@class="listTitle"]/h3/a/@href').extract()  
         for url in urls:  
             #print url
-            yield Request(url, callback=self.parse_page)
-        #print '333333333333333333333'
+            yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
 
         
 
     def parse_page(self, response) :
-        #self.parse(response)
-
         item = TtxspiderItem()
         smzdm_match = smzdm_pattern.search(response.url)
         if smzdm_match: 
@@ -45,11 +40,7 @@ class TtxSipder(CrawlSpider) :
         item['intro']  = response.xpath('//div[@class="inner-block"]/p[1]/text()').extract()
         item['content']  = response.xpath('//div[@class="inner-block"]').extract()
         if len(item['content']) == 0:
-            print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
             item['content'] = response.xpath('//div[@class="baoliao-block"]').extract()
-            print item['content'][0]
-        #top_box = response.xpath('//div[@class="article-top-box"]//a/@href').extract()
-        #print top_box[0] + "ddddddddd"
         item['img']  = response.xpath('//a[@class="pic-Box"]/img/@src').extract()
         item['link']  = response.url
         item['dlink']  = response.xpath('//div[@class="buy"]/a/@href').extract()
@@ -61,12 +52,15 @@ class TtxSipder(CrawlSpider) :
         item['follow_num'] = response.xpath('//a[@class="fav"]/em/text()').extract()
         item['author_name'] = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][1]/span[1]/text()').extract()
         item['created'] = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][1]/span[2]/text()').extract()
+        if len(item['created']) == 0:
+            item['created'] = response.xpath('//div[@class="article-meta-box"]/div[@class="article_meta"][1]/span[1]/text()').extract()
+            item['author_name'] = [""]
+        item['post_type'] = response.meta['post_type']
 
         yield item
 
         links = response.xpath('//div[@class="inner-block"]//a/@href').extract()
         for link in links:
-            #print link
             smzdm_match = smzdm_pattern.search(link)
             if smzdm_match: 
-                yield Request(link, callback=self.parse_page)
+                yield Request(link, meta={'post_type': 'baicai'}, callback=self.parse_page)

@@ -161,7 +161,7 @@ class ListHandler(BaseHandler):
 class GetListItemsHandler(BaseHandler):
     def get(self, template_variables = {}):
         p = int(self.get_argument("p", "1"))
-        items = self.post_model.get_all_posts()
+        items = self.post_model.get_all_posts(current_page = p)
         for item in items["list"]:
             self.jinja2 = self.settings.get("jinja2")
             item["thumb"] = helper.Filters(self.jinja2).mp_content_process(item["thumb"])
