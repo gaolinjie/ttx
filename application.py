@@ -70,6 +70,7 @@ class Application(tornado.web.Application):
             (r"/mytbs", handler.index.MyTabaosHandler),
             (r"/edit/tb/(.*)", handler.index.TaobaoEditHandler),
             (r"/baicai", handler.index.ListHandler),
+            (r"/baicai/items", handler.index.GetListItemsHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)

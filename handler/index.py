@@ -19,6 +19,7 @@ import datetime
 import os
 import requests
 import MySQLdb
+import helper
 
 from base import *
 from lib.sendmail import send
@@ -153,9 +154,20 @@ class PostHandler(BaseHandler):
 
 class ListHandler(BaseHandler):
     def get(self, template_variables = {}):
-        posts = self.post_model.get_all_posts()
-        template_variables["posts"] = posts
+        #posts = self.post_model.get_all_posts()
+        #template_variables["posts"] = posts
         self.render("list.html", **template_variables)
+
+class GetListItemsHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        p = int(self.get_argument("p", "1"))
+        items = self.post_model.get_all_posts()
+        for item in items["list"]:
+            self.jinja2 = self.settings.get("jinja2")
+            item["thumb"] = helper.Filters(self.jinja2).mp_content_process(item["thumb"])
+            item["created"] = helper.Filters(self.jinja2).pretty_date(item["created"])
+        result_json = json.dumps(items, cls=DateEncoder)
+        self.write(result_json)
 
 class MyTabaosHandler(BaseHandler):
     def get(self, template_variables = {}):

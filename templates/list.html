@@ -32,18 +32,7 @@
         <div id="img-content" class="rich_media_area_primary">
           
         <ul class="list list_preferential">
-          {%for post in posts.list%}
-          <li>
-            <a href="/p/{{post.id}}" target="_blank" class="hidden openApp">
-            <div class="image_wrap">
-              <div class="image"><img src="{{post.thumb|mp_content_process}}" alt="深夜白菜特价包邮 USB风扇、雕花小夜灯、车载充电器等"></div>
-            </div>
-            <address><span>{{post.created|pretty_date}}</span>{{post.vendor}}</address>
-            <h2>{{post.title}}</h2>
-            <div class="tips"><em>{{post.subtitle}}</em></div>
-            </a>
-          </li>
-          {%endfor%}
+          
         </ul>
 
 
@@ -55,6 +44,48 @@
     <script src="/static/js/zepto.min.js"></script>
     <script src="/static/js/lazyload.min.js"></script>
     <script src="/static/js/post.js"></script>
+    <script src="/static/js/dropload/dist/dropload.min.js"></script>
+
+    <script>
+      $(function(){
+    var pageNum = 1;
+
+    // dropload
+    $('.rich_media_area_primary').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: '/baicai/items?p='+pageNum,
+                dataType: 'json',
+                success: function(data){
+
+                    var result = '';
+                    for(var i = 0; i < data.list.length; i++){
+                        result += '<li><a href="/p/'+data.list[i].id+'" target="_blank" class="hidden openApp"><div class="image_wrap"><div class="image"><img src="'+data.list[i].thumb+'" alt="'+data.list[i].title+'"></div></div><address><span>'+data.list[i].created+'</span>'+data.list[i].vendor+'</address><h2>'+data.list[i].title+'</h2><div class="tips"><em>'+data.list[i].subtitle+'</em></div></a></li>';
+                    }
+
+                        $('.list').append(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+
+                        pageNum++;
+                        if (pageNum > data.page.pages) {
+                            me.lock();
+                            me.noData();
+                        }
+
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+</script>
 
   </body>
 </html>
