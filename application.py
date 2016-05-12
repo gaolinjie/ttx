@@ -62,7 +62,7 @@ class Application(tornado.web.Application):
             (r"/myshares", handler.index.MySharesHandler),
             (r"/myads", handler.index.MyAdsHandler),
             (r"/tb/(.*)", handler.index.TaobaoHandler),
-            (r"/prompt/(.*)", handler.index.TaobaoPromptHandler),
+            
             (r"/addtb", handler.index.AddTbHandler),
             (r"/get/shop", handler.index.GetShopUUIDHandler),
             (r"/shop/(.*)", handler.index.ShopHandler),
@@ -71,6 +71,8 @@ class Application(tornado.web.Application):
             (r"/edit/tb/(.*)", handler.index.TaobaoEditHandler),
             (r"/baicai", handler.index.ListHandler),
             (r"/baicai/items", handler.index.GetListItemsHandler),
+            (r"/item", handler.index.TaobaoHandler),
+            (r"/prompt", handler.index.TaobaoPromptHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)

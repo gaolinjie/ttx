@@ -57,17 +57,19 @@ class TtxspiderPipeline(object):
 		else:
 			if  len(item['content']) == 0:
 				item['content'].append("")
+			if  len(item['intro']) == 0:
+				item['intro'].append("")
 
 			author_name = item['author_name'][0]
 			if author_name != "":
-				author_name = author_name.replace("爆料人：", "");
+				author_name = author_name.replace(u'\u7206\u6599\u4eba\uff1a', u'');
 			#print author_name
 			created = item['created'][0].replace(u'\u65f6\u95f4\uff1a', u'')
 			if created.find("-") != -1:
 				created = time.strftime('%Y-') + created + ":00"
 			else:
 				created = time.strftime('%Y-%m-%d ') + created + ":00"
-			#print created
+			print created
 			tx.execute(\
 				"insert into post (pid, title, subtitle, content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
 				(item['pid'], item['title'][0], item['subtitle'][0], item['content'][0], item['post_type'], item['img'][0], item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], author_name, item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))

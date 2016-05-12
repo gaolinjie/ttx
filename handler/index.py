@@ -154,8 +154,6 @@ class PostHandler(BaseHandler):
 
 class ListHandler(BaseHandler):
     def get(self, template_variables = {}):
-        #posts = self.post_model.get_all_posts()
-        #template_variables["posts"] = posts
         self.render("list.html", **template_variables)
 
 class GetListItemsHandler(BaseHandler):
@@ -269,37 +267,25 @@ class AddTbHandler(BaseHandler):
                 }))
 
 class TaobaoHandler(BaseHandler):
-    def get(self, item_uuid, template_variables = {}):
-        taobao = self.taobao_model.get_taobao_by_item_uuid(item_uuid)
-        template_variables["taobao"] = taobao
+    def get(self, template_variables = {}):
+        url = self.get_argument("url", "")
+        template_variables["tmall_link"] = url
 
         if is_weixin_browser(self):
-            if taobao.src_code and taobao.src_code != '':
-                doc=pyq(taobao.src_code)
-                tao_content = doc('.viewport').outerHtml()
-                template_variables["tao_content"] = tao_content
-                if taobao.item_type == 'taobao':
-                    self.render("taobao_src.html", **template_variables)
-                else:
-                    self.render("tmall_src.html", **template_variables)
-            else:
-                if taobao.item_type == 'taobao':
-                    self.render("taobao.html", **template_variables)
-                else:
-                    self.render("tmall.html", **template_variables)
+            self.render("tmall.html", **template_variables)
         else:
-            self.redirect(taobao.item_link)
+            self.redirect(url)
 
-        
 
 class TaobaoPromptHandler(BaseHandler):
-    def get(self, item_uuid, template_variables = {}):
-        taobao = self.taobao_model.get_taobao_by_item_uuid(item_uuid)
-        template_variables["taobao"] = taobao
+    def get(self, template_variables = {}):
+        url = self.get_argument("url", "")
+        template_variables["tmall_link"] = url
+
         if is_weixin_browser(self):
             self.render("prompt.html", **template_variables)
         else:
-            self.redirect(taobao.item_link)
+            self.redirect("http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl="+url)
 
 class TaobaoEditHandler(BaseHandler):
     def get(self, item_uuid, template_variables = {}):

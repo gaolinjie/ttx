@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1, minimum-scale=1, user-scalable=no">
   </head>
 
-  <body {%if taobao.tao_code%}class="hasTaoCode"{%endif%}>
+  <body>
     <script type="text/javascript" async="" src="//g.alicdn.com/secdev/entry/index.js?t=202550">
     </script>
     <script type="text/javascript" async="" src="//g.alicdn.com/pecdn/mlog/agp_heat_mu.min.js?t=202550">
@@ -41,13 +41,13 @@
     </div>
     <div class="beatMain">
       <div class="imgContainer">
-        <img src="{{taobao.item_thumb}}_480x480.jpg">
+        <img src="">
       </div>
       <p class="itemContent">
-        {{taobao.item_title}}
+        
       </p>
       <p class="itemPrice">
-        {{taobao.item_price}}
+        
       </p>
       <div class="moonTitleContainer">
         <span>
@@ -73,13 +73,6 @@
       })();
     </script>
     <script src="//g.alicdn.com/sd/data_sufei/1.5.1/aplus/index.js">
-    </script>
-    <script>
-    window.onload =function() {
-      if (document.querySelector("body").classList.contains("hasTaoCode")) {
-        alert("淘口令已经成功复制，打开淘宝或天猫App即可直接跳转到该宝贝！");
-      }
-    };
     </script>
   </body>
   <iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none; "

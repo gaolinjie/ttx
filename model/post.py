@@ -38,4 +38,4 @@ class PostModel(Query):
     def get_all_posts(self, num = 10, current_page = 1):
         where = "post.post_type = '%s'" % "baicai-featured"
         order = "post.created DESC, post.id DESC"
-        return self.order(order).pages(current_page = current_page, list_rows = num)
+        return self.where(where).order(order).pages(current_page = current_page, list_rows = num)

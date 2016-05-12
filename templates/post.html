@@ -43,7 +43,9 @@
 
           {{post.content|mp_content_process}}
 
-          <div align="center"><img src="{{post.thumb|mp_content_process}}" /></div> 
+          {%if post.post_type == "baicai"%}
+          <div align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process}}" /></a></div> 
+          {%endif%}
           </div>
         </div>
       </div>
