@@ -274,7 +274,10 @@ class TaobaoHandler(BaseHandler):
         if is_weixin_browser(self):
             self.render("tmall.html", **template_variables)
         else:
-            self.redirect(url)
+            if is_mobile_browser:
+                self.redirect("http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl="+url)
+            else:
+                self.redirect(url)
 
 
 class TaobaoPromptHandler(BaseHandler):
