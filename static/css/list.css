@@ -1,3 +1,6 @@
+body {
+    background-color: #ffffff;
+}
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     font-size: 16px;
@@ -6,17 +9,12 @@ i, em, address, cite {
     font-style: normal;
 }
 .rich_media_area_primary {
-    position: relative;
+    position: inherit;
     padding: 20px 5px 5px;
     background-color: #fff;
 }
-.list_preferential {
-    padding: 0 1.875%;
-}
 .list {
     font-size: 15px;
-    max-width: 740px;
-    margin: 0 auto;
 }
 .list_preferential li {
     border-bottom: 1px solid #dedede;
@@ -60,6 +58,9 @@ li {
 }
 .image img {
     vertical-align: middle;
+}
+.list_preferential {
+    padding: 0 1.875%;
 }
 .list_preferential li address {
     font-size: .9em;
@@ -123,6 +124,8 @@ li {
     background-color: #f8f8f8;
     border: 1 solid #e7e7e7;
 }
-
-
+.rich_media {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
 }
