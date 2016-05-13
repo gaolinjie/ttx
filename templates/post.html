@@ -30,6 +30,7 @@
     <div class="rich_media_inner">
       <div id="page-content">
         <div id="img-content" class="rich_media_area_primary">
+          <div class="wrap-content">
           <h2 class="rich_media_title" id="activity-name">
             {{post.title}} <span class="title_price red">{{post.subtitle}}</span>
           </h2>
@@ -46,6 +47,7 @@
           {%if post.post_type == "baicai"%}
           <div align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process}}" /></a></div> 
           {%endif%}
+        </div>
           </div>
         </div>
       </div>

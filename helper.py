@@ -162,6 +162,10 @@ class Filters():
         content = re.sub(r'http://www.smzdm.com/p/([0-9]{7})/', r'/p/\1?source=smzdm', content)
 
         content = re.sub(r'值友爆料原文'.decode("utf8"), r'白菜推荐理由：', content)
+        content = re.sub(r'白菜小窝'.decode("utf8"), r'白菜朋友圈', content)
+        content = re.sub(r'http://faxian.smzdm.com/9kuai9/', r'/baicai', content)
+        content = re.sub(r'http://www.smzdm.com/tag/%E6%AF%8F%E6%97%A5%E7%99%BD%E8%8F%9C/faxian/', r'/baicai', content)
+        
 
         return content
 

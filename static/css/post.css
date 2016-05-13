@@ -1,3 +1,6 @@
+body {
+    background-color: #ffffff;
+}
 img {
   max-width: 100%;
 }
@@ -13,19 +16,18 @@ p {
 }
 
 .siteWrap {
-    width: 100%;
     clear: both;
     margin-bottom: 30px;
+    position: relative;
+    border: 1px solid #eee;
+    background-color: #fdfdfd;
+    padding: 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
 }
 
 .siteBlock {
-    border: 1px solid #eee;
-    background-color: #fdfdfd;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
     margin: 0 0 25px;
-    padding: 10px;
-    float: left;
 }
 
 .sitePic {
@@ -90,4 +92,9 @@ i, em, address, cite {
     margin-top: 5px;
     display: block;
     overflow: hidden;
+}
+.rich_media {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
 }
