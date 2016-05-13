@@ -22,7 +22,7 @@ secret_key = "Ge61JJtUSC5myXVrntdVOqAZ5L7WpXR_Taa9C8vb"
 bucket_name = "mmm-cdn"
 
 dup = 0
-DUP_THRESHOLD = 3
+DUP_THRESHOLD = 100
 
 q = Auth(access_key, secret_key)
 bucket = BucketManager(q)

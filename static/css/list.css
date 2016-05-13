@@ -10,7 +10,7 @@ i, em, address, cite {
 }
 .rich_media_area_primary {
     position: inherit;
-    padding: 20px 5px 5px;
+    padding: 20px 15px 15px;
     background-color: #fff;
 }
 .list {
@@ -58,9 +58,6 @@ li {
 }
 .image img {
     vertical-align: middle;
-}
-.list_preferential {
-    padding: 0 1.875%;
 }
 .list_preferential li address {
     font-size: .9em;
@@ -128,4 +125,7 @@ li {
     max-width: 740px;
     margin-left: auto;
     margin-right: auto;
+}
+.rich_media_area_primary:before {
+    border-top: none;
 }
