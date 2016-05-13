@@ -54,21 +54,7 @@ class Application(tornado.web.Application):
             (r"/(bdsitemap\.txt)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
             (r"/(orca\.txt)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
 
-            (r"/", handler.index.IndexHandler),
-            (r"/weixin", handler.index.WeixinHandler),
-            (r"/shareit", handler.index.ShareItHandler),
             (r"/p/(\d+)", handler.index.PostHandler),
-            (r"/addad", handler.index.AddAdHandler),
-            (r"/myshares", handler.index.MySharesHandler),
-            (r"/myads", handler.index.MyAdsHandler),
-            (r"/tb/(.*)", handler.index.TaobaoHandler),
-            
-            (r"/addtb", handler.index.AddTbHandler),
-            (r"/get/shop", handler.index.GetShopUUIDHandler),
-            (r"/shop/(.*)", handler.index.ShopHandler),
-            (r"/api/shop/(.*)", handler.index.GetShopItemsHandler),
-            (r"/mytbs", handler.index.MyTabaosHandler),
-            (r"/edit/tb/(.*)", handler.index.TaobaoEditHandler),
             (r"/baicai", handler.index.ListHandler),
             (r"/baicai/items", handler.index.GetListItemsHandler),
             (r"/item", handler.index.TaobaoHandler),
@@ -89,7 +75,6 @@ class Application(tornado.web.Application):
         # Have one global model for db query
         self.user_model = self.loader.use("user.model")
         self.post_model = self.loader.use("post.model")
-        self.item_model = self.loader.use("item.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)

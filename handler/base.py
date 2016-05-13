@@ -58,10 +58,6 @@ class BaseHandler(tornado.web.RequestHandler):
     def post_model(self):
         return self.application.post_model
 
-    @property
-    def item_model(self):
-        return self.application.item_model
-
 '''
     @property
     def write_error(self, **kwargs):
