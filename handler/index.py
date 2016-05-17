@@ -81,7 +81,21 @@ class TaobaoHandler(BaseHandler):
         template_variables["tmall_link"] = url
 
         if is_weixin_browser(self):
-            self.render("tmall.html", **template_variables)
+            tmall_pattern = re.compile(r'http://detail.tmall.com/item.htm?\S*id=(\d+)')
+            tmall_match = tmall_pattern.search(url) 
+            if tmall_match: 
+                sku = tmall_match.group(1)
+
+                doc=pyq("http://djaa.cn/ajax/cm_details/to_cm_details_tmall.php", 
+                    headers={'User-Agent': 'Mozilla/5.0 (MicroMessenger;iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'},
+                    method='post',
+                    data={'id': sku, 'shopUrl': url, 'shop_type': 'tmall', 'small_shop_type': 'cm_details'})
+                    #print doc
+                title = doc('.dtif-h').text()
+                content = doc('.viewport').outerHtml()
+                template_variables["title"] = title
+                template_variables["content"] = content
+                self.render("tmall.html", **template_variables)  
         else:
             if is_mobile_browser:
                 self.redirect("http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl="+url)
