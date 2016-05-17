@@ -10,6 +10,8 @@ from ttxspider.items import TtxspiderItem
 import re
 import uuid
 from pyquery import PyQuery as pyq
+import MySQLdb
+import MySQLdb.cursors
 
 smzdm_pattern = re.compile(r'http://www.smzdm.com/p/([0-9]{7})')
 
@@ -21,13 +23,28 @@ class TtxSipder(CrawlSpider) :
     ]
 
     def parse(self, response) :
-    	sel = Selector(response)
+        sel = Selector(response)
+
+        conn = MySQLdb.connect(
+            user='ttx',
+            passwd='ttx',
+            db='ttx',
+            host='localhost',
+            cursorclass = MySQLdb.cursors.DictCursor,
+            charset="utf8",
+            use_unicode=True
+            )
+        cursor = conn.cursor()
 
         urls = sel.xpath('//div[@class="listTitle"]/h3/a/@href').extract()  
-        for url in urls:  
-            #print url
-            yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
-
+        for url in urls: 
+            smzdm_match = smzdm_pattern.search(url)
+            if smzdm_match: 
+                pid = smzdm_match.group(1)
+                cursor.execute("select * from post where pid=%s", (pid,))
+                result=cursor.fetchone()
+                if not result:
+                    yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
         
 
     def parse_page(self, response) :
