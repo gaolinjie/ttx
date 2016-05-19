@@ -48,6 +48,11 @@ secret_key = "Ge61JJtUSC5myXVrntdVOqAZ5L7WpXR_Taa9C8vb"
 q = Auth(access_key, secret_key)
 bucket = BucketManager(q)
 
+
+class IndexHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        self.redirect("/baicai")
+
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         source = self.get_argument("source", "")

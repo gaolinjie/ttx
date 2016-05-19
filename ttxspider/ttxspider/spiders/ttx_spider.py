@@ -41,9 +41,11 @@ class TtxSipder(CrawlSpider) :
             smzdm_match = smzdm_pattern.search(url)
             if smzdm_match: 
                 pid = smzdm_match.group(1)
+                print pid
                 cursor.execute("select * from post where pid=%s", (pid,))
                 result=cursor.fetchone()
                 if not result:
+                    print "if not result:"
                     yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
         
 

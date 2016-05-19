@@ -59,6 +59,8 @@ class TtxspiderPipeline(object):
 				item['content'].append("")
 			if  len(item['intro']) == 0:
 				item['intro'].append("")
+			if 	len(item['dlink']) == 0:
+				item['dlink'].append("/")
 
 			author_name = item['author_name'][0]
 			if author_name != "":
