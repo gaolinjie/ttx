@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.selector import Selector
-from scrapy.selector import HtmlXPathSelector
-from scrapy.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.http import Request, FormRequest
+import scrapy
 from ttxspider.items import TtxspiderItem
 import re
 import uuid
@@ -15,7 +11,7 @@ import MySQLdb.cursors
 
 smzdm_pattern = re.compile(r'http://www.smzdm.com/p/([0-9]{7})')
 
-class TtxSipder(CrawlSpider) :
+class TtxSipder(scrapy.Spider) :
     name = "ttxspider"
     allowed_domains = ["www.smzdm.com"]
     start_urls = [
@@ -23,7 +19,7 @@ class TtxSipder(CrawlSpider) :
     ]
 
     def parse(self, response) :
-        sel = Selector(response)
+        sel = scrapy.Selector(response)
 
         conn = MySQLdb.connect(
             user='ttx',

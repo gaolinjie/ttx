@@ -5,26 +5,25 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
 
-
-class TtxspiderItem(scrapy.Item):
+class TtxspiderItem(Item):
     # define the fields for your item here like:
-    pid = scrapy.Field()
-    title = scrapy.Field()
-    subtitle = scrapy.Field()
-    img = scrapy.Field()
-    intro = scrapy.Field()
-    content = scrapy.Field()
-    link = scrapy.Field()
-    dlink = scrapy.Field()
-    price = scrapy.Field()
-    vendor = scrapy.Field()
-    author_name = scrapy.Field()
-    tag = scrapy.Field()
-    up_num = scrapy.Field()
-    down_num = scrapy.Field()
-    reply_num = scrapy.Field()
-    follow_num = scrapy.Field()
-    created = scrapy.Field()
-    post_type = scrapy.Field()
+    pid = Field()
+    title = Field()
+    subtitle = Field()
+    img = Field()
+    intro = Field()
+    content = Field()
+    link = Field()
+    dlink = Field()
+    price = Field()
+    vendor = Field()
+    author_name = Field()
+    tag = Field()
+    up_num = Field()
+    down_num = Field()
+    reply_num = Field()
+    follow_num = Field()
+    created = Field()
+    post_type = Field()
