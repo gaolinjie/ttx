@@ -34,7 +34,6 @@ from lib.dateencoder import DateEncoder
 
 from lib.mobile import is_mobile_browser
 from lib.mobile import is_weixin_browser
-from form.post import *
 
 from qiniu import Auth
 from qiniu import BucketManager
