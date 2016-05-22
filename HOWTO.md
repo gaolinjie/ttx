@@ -106,3 +106,22 @@ HOWTO deploy on Linode
 ###Update your web app
 	$ cd ~/www/ttx
 	$ git pull
+
+###Timed run scrapy use crontab
+####1. 编写 cron.sh
+	#! /bin/sh                     
+	export PATH=$PATH:/usr/local/bin
+	cd ~/www/ttx/ttxspider
+	nohup scrapy crawl ttxspider >> ttxspider.log 2>&1 &
+####2. 编辑 crontab 文件
+	$ crontab -e
+	# 插入命令 * */3 * * *  sh ~/www/ttx/ttxspider/cron.sh
+####3. 开启 crontab log
+	$ vi /etc/rsyslog.d/50-default.conf 
+	$ service rsyslog  restart
+	$ tail -f /var/log/cron.log
+	# 查看 crontab 运行 log
+####4. 启动、停止和重启 crontab 命令
+	$ /etc/init.d/cron start
+	$ /etc/init.d/cron stop
+	$ /etc/init.d/cron restart
