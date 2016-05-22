@@ -125,3 +125,8 @@ HOWTO deploy on Linode
 	$ /etc/init.d/cron start
 	$ /etc/init.d/cron stop
 	$ /etc/init.d/cron restart
+####5. 列出、删除 crontab 文件
+	$ crontab -l
+	# 列出 crontab 文件
+	$ crontab -r
+	# 删除 crontab 文件
