@@ -14,6 +14,18 @@ import MySQLdb
 import MySQLdb.cursors
 
 smzdm_pattern = re.compile(r'http://www.smzdm.com/p/([0-9]{7})')
+next_pattern = re.compile(r'白菜特价包邮'.decode("utf8"))
+conn = MySQLdb.connect(
+            user='ttx',
+            passwd='ttx',
+            db='ttx',
+            host='localhost',
+            cursorclass = MySQLdb.cursors.DictCursor,
+            charset="utf8",
+            use_unicode=True
+            )
+cursor = conn.cursor()
+
 
 class TtxSipder(CrawlSpider) :
     name = "ttxspider"
@@ -25,30 +37,16 @@ class TtxSipder(CrawlSpider) :
     def parse(self, response) :
         sel = Selector(response)
 
-        conn = MySQLdb.connect(
-            user='ttx',
-            passwd='ttx',
-            db='ttx',
-            host='localhost',
-            cursorclass = MySQLdb.cursors.DictCursor,
-            charset="utf8",
-            use_unicode=True
-            )
-        cursor = conn.cursor()
-
         urls = sel.xpath('//div[@class="listTitle"]/h3/a/@href').extract()  
         for url in urls: 
             smzdm_match = smzdm_pattern.search(url)
             if smzdm_match: 
                 pid = smzdm_match.group(1)
-                print pid
                 cursor.execute("select * from post where pid=%s", (pid,))
                 result=cursor.fetchone()
                 if not result:
-                    print "if not result:"
                     yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
         
-
     def parse_page(self, response) :
         item = TtxspiderItem()
         smzdm_match = smzdm_pattern.search(response.url)
@@ -79,7 +77,19 @@ class TtxSipder(CrawlSpider) :
         yield item
 
         links = response.xpath('//div[@class="inner-block"]//a/@href').extract()
+        texts = response.xpath('//div[@class="inner-block"]//a/text()').extract()
+        index = 0
         for link in links:
+            text = texts[index]
+            if text:
+                next_match = next_pattern.search(text)
+                if next_match:
+                    continue
             smzdm_match = smzdm_pattern.search(link)
             if smzdm_match: 
-                yield Request(link, meta={'post_type': 'baicai'}, callback=self.parse_page)
+                pid = smzdm_match.group(1)
+                cursor.execute("select * from post where pid=%s", (pid,))
+                result=cursor.fetchone()
+                if not result:
+                    yield Request(link, meta={'post_type': 'baicai'}, callback=self.parse_page)
+            index = index + 1
