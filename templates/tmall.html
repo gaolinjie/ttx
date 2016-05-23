@@ -80,6 +80,7 @@
 </section>
 
 <script type="text/javascript" src="http://djaa.cn/js/jquery-1.9.1.min.js"></script>
+<script src="/static/js/lazyload.min.js"></script>
 <script>
     $(function(){
         $(".dtct-ul li:eq(0)").click(function(){
@@ -108,11 +109,14 @@
             $(".dt-param").hide();
             $(".dt-comt").show();
         })
+
+        $("img").lazyload();
        
     })
     </script>
 
     <script>
+    
     $(document).on('click', '#detail-base-smart-banner', function() {
       var link = $(this).attr("data-link");
       window.location.href="/prompt?url=" + link;
