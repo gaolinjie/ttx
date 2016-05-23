@@ -84,6 +84,7 @@ class TtxSipder(CrawlSpider) :
         index = 0
         for link in links:
             text = texts[index]
+            index = index + 1
             if text:
                 next_match = next_pattern.search(text)
                 if next_match:
@@ -95,4 +96,3 @@ class TtxSipder(CrawlSpider) :
                 result=cursor.fetchone()
                 if not result:
                     yield Request(link, meta={'post_type': 'baicai'}, callback=self.parse_page)
-            index = index + 1
