@@ -41,11 +41,14 @@ class TtxSipder(CrawlSpider) :
         for url in urls: 
             smzdm_match = smzdm_pattern.search(url)
             if smzdm_match: 
+                '''
                 pid = smzdm_match.group(1)
                 cursor.execute("select * from post where pid=%s", (pid,))
                 result=cursor.fetchone()
                 if not result:
                     yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
+                '''
+                yield Request(url, meta={'post_type': 'baicai-featured'}, callback=self.parse_page)
         
     def parse_page(self, response) :
         item = TtxspiderItem()
