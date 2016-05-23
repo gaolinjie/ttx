@@ -115,7 +115,7 @@ HOWTO deploy on Linode
 	nohup scrapy crawl ttxspider >> ttxspider.log 2>&1 &
 ####2. 编辑 crontab 文件
 	$ crontab -e
-	# 插入命令 * */3 * * *  sh ~/www/ttx/ttxspider/cron.sh
+	# 插入命令 1 */3 * * *  sh ~/www/ttx/ttxspider/cron.sh
 ####3. 开启 crontab log
 	$ vi /etc/rsyslog.d/50-default.conf 
 	$ service rsyslog  restart
