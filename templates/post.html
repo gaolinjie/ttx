@@ -13,7 +13,36 @@
   <title>{{post.title}} {{post.subtitle}}</title>
   <link rel="stylesheet" type="text/css" href="/static/css/page_mp_article_improve2a7a3f.css">
   <link rel="stylesheet" type="text/css" href="/static/css/post.css">
-  <style></style>
+  <style>
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+</style>
   <!--[if lt IE 9]>
   <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2a7a3f.css">
   <![endif]-->
@@ -38,12 +67,15 @@
           <div class="rich_media_meta_list">
             <span id="copyright_logo" class="rich_media_meta meta_original_tag">原创</span>
             <em id="post-date" class="rich_media_meta rich_media_meta_text">{{post.created | pretty_date}}</em>
-            <em class="rich_media_meta rich_media_meta_text">&nbsp;&nbsp;白菜朋友圈</em>
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">买买买</a>
-            <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">买买买</span>
+            
+            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">白菜朋友圈</a>
           </div>
 
-          <p style="max-width: 100%; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); line-height: 25.6px; text-align: center; box-sizing: border-box !important; word-wrap: break-word !important; background-color: rgb(255, 255, 255);"><img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important;" _width="auto" src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1"></p>
+          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important;" _width="auto" src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1">
+
+          {%if post.post_type == "baicai"%}
+          <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">直达链接</button></a>
+          {%endif%}
 
           {{post.content|mp_content_process}}
 
