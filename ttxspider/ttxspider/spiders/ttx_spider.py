@@ -80,14 +80,11 @@ class TtxSipder(CrawlSpider) :
         yield item
 
         links = response.xpath('//div[@class="inner-block"]//a/@href').extract()
-        texts = response.xpath('//div[@class="inner-block"]//a/text()').extract()
+        #texts = response.xpath('//div[@class="inner-block"]//a/text()').extract()
         index = 0
         for link in links:
-            text = texts[index]
-            if text:
-                next_match = next_pattern.search(text)
-                if next_match:
-                    continue
+            if index == len(links) -1:
+                continue
             smzdm_match = smzdm_pattern.search(link)
             if smzdm_match: 
                 pid = smzdm_match.group(1)
