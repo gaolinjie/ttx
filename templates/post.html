@@ -65,16 +65,16 @@
           </h2>
 
           <div class="rich_media_meta_list">
-            <span id="copyright_logo" class="rich_media_meta meta_original_tag">原创</span>
+            <span id="copyright_logo" style="display: none;" class="rich_media_meta meta_original_tag">原创</span>
             <em id="post-date" class="rich_media_meta rich_media_meta_text">{{post.created | pretty_date}}</em>
             
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">白菜朋友圈</a>
+            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">买买买•白菜朋友圈</a>
           </div>
 
-          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important;" _width="auto" src="http://www.zorhand.com/img?url=http://mmbiz.qpic.cn/mmbiz/IZucY1jIEbJJ2xlia86L5TTmZMeFvicKB0yHUEu04Cy5FcPaTeAicBCiaCsFUGT0YrBzBxYOsBrnCTWiaabhiarZiaFxg/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1">
+          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=http://bianji.rengzan.com/ueditor/php/upload/image/20150907/1441620360979628.gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: -18px;" _width="auto">
 
           {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
-          <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">直达链接</button></a>
+          <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">购买链接</button></a>
           {%endif%}
 
           {{post.content|mp_content_process}}
