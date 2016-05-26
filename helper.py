@@ -29,6 +29,7 @@ class Filters():
         self.jinja2.filters["mobile_index_process"] = self.mobile_index_process
         self.jinja2.filters["reply_process"] = self.reply_process
         self.jinja2.filters["mp_content_process"] = self.mp_content_process
+        self.jinja2.filters["tmall_content_process"] = self.tmall_content_process
         self.jinja2.filters["markdown"] = self.markdown
         return self.jinja2
 
@@ -167,6 +168,14 @@ class Filters():
         content = re.sub(r'http://www.smzdm.com/tag/%E6%AF%8F%E6%97%A5%E7%99%BD%E8%8F%9C/faxian/', r'/baicai', content)
         
 
+        return content
+
+    def tmall_content_process(self, content):
+        if None==content:
+            return
+        #content = re.sub(r'data-src', r'data-original', content)
+        content = re.sub(r'src="', r'data-src="', content)
+        
         return content
 
     def mobile_index_process(self, content):

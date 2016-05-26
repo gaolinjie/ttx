@@ -71,16 +71,18 @@
             <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">买买买•白菜朋友圈</a>
           </div>
 
-          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=http://bianji.rengzan.com/ueditor/php/upload/image/20150907/1441620360979628.gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: -18px;" _width="auto">
+          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiaEwcIibIaXVtqpuG8xRJcKm1ercF1wCyEZsT3BjzObIKDVI1spHwot0xBAMrWibbeYiaTyMPtfwPZCA/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: -18px;" _width="auto">
 
-          {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
-          <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">购买链接</button></a>
-          {%endif%}
+          
 
           {{post.content|mp_content_process}}
 
           {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
-          <div align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process}}" /></a></div> 
+          <div style="margin-bottom: 18px;" align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process}}" /></a></div> 
+          {%endif%}
+
+          {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
+          <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">购买链接</button></a>
           {%endif%}
 
           <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtjrwJFYHSCIfeTRA9VoMZ3RUnYYvchiasicV93OlViaop3BiagqTfB6cy8jm9zIXb5DD74rUSZw2R6SQg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: 18px;" _width="auto">
