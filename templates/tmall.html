@@ -17,15 +17,29 @@
     .dtct-ul {
     z-index: 1 !important;
     }
+
+    .beatHeader {
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    overflow: hidden;
+    left:0;
+    top:0;
+    opacity: 0.95;
+    display: none;
+    }
     </style>
 
 </head>
 
 <body style="margin: 0;">
+<div class="beatHeader android" id="landingHeader">
+</div>
 
 {%if 1%}
   <div id="detail-base-smart-banner"
-  style="position: fixed; height: 44px; width: 100%; z-index: 999; top: 0; left: 0; cursor: pointer;" data-link="{{tmall_link}}">
+  style="position: fixed; height: 44px; width: 100%; z-index: 998; top: 0; left: 0; cursor: pointer;" data-link="{{tmall_link}}">
   <div class="mui-sb-box" style="width: 100%; height: 44px; position: relative; background-color: #f14344;">
     <img class="logo" src="//img.alicdn.com/tps/TB1twKDJFXXXXbtXVXXXXXXXXXX-92-92.png" width="42" height="42" style="width: 35px;
     height: 35px;
@@ -116,16 +130,38 @@
     </script>
 
     <script>
+    function toggleBeatHeader() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (/iphone|ipad|ipod/.test(ua)) {
+            //alert("ios");
+            $(".beatHeader").css({"background": "url(//gw.alicdn.com/tps/TB1PzXWKVXXXXaaaXXXXXXXXXXX-640-242.png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+        } else if (/android/.test(ua)) {
+            //alert("android");
+            $(".beatHeader").css({"background": "url(//gw.alicdn.com/tps/TB1Fb00KVXXXXcKXVXXXXXXXXXX-720-242.png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+        } 
+      $(".beatHeader").toggle();
+    }
     
     $(document).on('click', '#detail-base-smart-banner', function() {
-      var link = $(this).attr("data-link");
-      window.location.href="/prompt?url=" + link;
+      //var link = $(this).attr("data-link");
+      //window.location.href="/prompt?url=" + link;
+      toggleBeatHeader();
     });
 
     $(document).on('click', '#s-actionBar-container', function() {
-        var link = $(this).attr("data-link");
-      window.location.href="/prompt?url=" + link;
+        //var link = $(this).attr("data-link");
+      //window.location.href="/prompt?url=" + link;
+      toggleBeatHeader();
     });
+    $(document).on('click', '.beatHeader', function() {
+      toggleBeatHeader();
+    });
+    </script>
+
+    <script>
+     $(window).load(function() {  
+         
+    }); 
     </script>
 
 

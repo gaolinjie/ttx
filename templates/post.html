@@ -68,10 +68,10 @@
             <span id="copyright_logo" style="display: none;" class="rich_media_meta meta_original_tag">原创</span>
             <em id="post-date" class="rich_media_meta rich_media_meta_text">{{post.created | pretty_date}}</em>
             
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">买买买•白菜朋友圈</a>
+            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="#follow" id="post-user">买买买•白菜朋友圈</a>
           </div>
 
-          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiaEwcIibIaXVtqpuG8xRJcKm1ercF1wCyEZsT3BjzObIKDVI1spHwot0xBAMrWibbeYiaTyMPtfwPZCA/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: -18px;" _width="auto">
+          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiaEwcIibIaXVtqpuG8xRJcKm1ercF1wCyEZsT3BjzObIKDVI1spHwot0xBAMrWibbeYiaTyMPtfwPZCA/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: -18px;" _width="auto">
 
           
 
@@ -85,7 +85,9 @@
           <a href="{{post.dlink|mp_content_process}}"><button type="button" class="btn btn-danger" style="">购买链接</button></a>
           {%endif%}
 
-          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" data-src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtjrwJFYHSCIfeTRA9VoMZ3RUnYYvchiasicV93OlViaop3BiagqTfB6cy8jm9zIXb5DD74rUSZw2R6SQg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: 18px;" _width="auto">
+          <img data-type="gif" data-ratio="0.16007194244604317" data-w="" src="http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtjrwJFYHSCIfeTRA9VoMZ3RUnYYvchiasicV93OlViaop3BiagqTfB6cy8jm9zIXb5DD74rUSZw2R6SQg/0?wx_fmt=gif" style="box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; height: auto !important; margin-top: 18px;" _width="auto">
+
+          <div id="follow" style="margin-top: 0px;"></div>
         </div>
           </div>
         </div>
@@ -93,12 +95,69 @@
     </div>
 
     <script src="/static/js/zepto.min.js"></script>
-    <script src="/static/js/lazyload.min.js"></script>
-    <script src="/static/js/post.js"></script>
     <script>
       $(document).ready(function() {
-        $("img").lazyload();
-      });
+
+    $("a").each(function() {
+        var text = $(this).text();
+        if (text.indexOf("优惠券")!=-1 || text.indexOf("优惠劵")!=-1 || 
+            text.indexOf("店铺券")!=-1 || text.indexOf("元券")!=-1 || 
+            text.indexOf("现金卷")!=-1 || text.indexOf("现金券")!=-1 ||
+            text.indexOf("元劵")!=-1 || text.indexOf("元优惠")!=-1 ||
+            text.indexOf("优惠卷") != -1) {
+            $(this).css({"color":"#f04848", 
+                "background-color":"#f5f5f5",
+                "border-radius":"2px",
+                "text-align":"center", 
+                "padding": "0 2px",
+                "margin-right": "2px"});
+
+            var link = $(this).attr('href');
+            var seller_id;
+            var activity_id;
+            var result = link.match(/seller_id=(\d*)/); 
+            if (result != null) { 
+                seller_id = result[1]; 
+            }
+            result = link.match(/activity_id=(\w*)/); 
+            if (result != null) { 
+                activity_id = result[1]; 
+            }
+            if (seller_id == null) {
+                result = link.match(/sellerId%3D(\d*)/); 
+                if (result != null) { 
+                    seller_id = result[1]; 
+                }
+                result = link.match(/activityId%3D(\w*)/); 
+                if (result != null) { 
+                    activity_id = result[1]; 
+                }
+            }
+            if (seller_id == null) {
+                result = link.match(/sellerId=(\d*)/); 
+                if (result != null) { 
+                    seller_id = result[1]; 
+                }
+                result = link.match(/activityId=(\w*)/); 
+                if (result != null) { 
+                    activity_id = result[1]; 
+                }
+            }
+            if (seller_id == null) {
+                result = link.match(/sellerId%3D(\d*)/); 
+                if (result != null) { 
+                    seller_id = result[1]; 
+                }
+                result = link.match(/activityId%3D(\w*)/); 
+                if (result != null) { 
+                    activity_id = result[1]; 
+                }
+            }
+
+            $(this).attr('href', 'http://djaa.cn/iphone_qiange_discount.php?shopUrl=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D'+seller_id+'%26activity_id%3D'+activity_id+'&shop_type=taobao&Advertisement=0&small_shop_type=discount');
+        }
+    });
+});
     </script>
 
   </body>
