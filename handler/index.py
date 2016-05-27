@@ -84,7 +84,7 @@ class TaobaoHandler(BaseHandler):
         url = self.get_argument("url", "")
         template_variables["tmall_link"] = url
 
-        if is_weixin_browser(self):
+        if is_weixin_browser(self) or is_mobile_browser(self):
             tmall_pattern = re.compile(r'http://detail.tmall.com/item.htm?\S*id=(\d+)')
             tmall_match = tmall_pattern.search(url) 
             if tmall_match: 
@@ -99,12 +99,11 @@ class TaobaoHandler(BaseHandler):
                 content = doc('.viewport').outerHtml()
                 template_variables["title"] = title
                 template_variables["content"] = content
+                template_variables["sku"] = sku
                 self.render("tmall.html", **template_variables)  
         else:
-            if is_mobile_browser(self):
-                self.redirect("http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl="+url)
-            else:
-                self.redirect(url)
+            self.redirect(url)
+                
 
 
 class TaobaoPromptHandler(BaseHandler):
