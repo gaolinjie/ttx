@@ -101,7 +101,7 @@ class TaobaoHandler(BaseHandler):
                 template_variables["content"] = content
                 self.render("tmall.html", **template_variables)  
         else:
-            if is_mobile_browser:
+            if is_mobile_browser(self):
                 self.redirect("http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl="+url)
             else:
                 self.redirect(url)
