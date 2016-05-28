@@ -1,0 +1,129 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="dns-prefetch" href="//res.wx.qq.com">
+  <link rel="dns-prefetch" href="//mmbiz.qpic.cn">
+  <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon22c41b.ico">
+  <title></title>
+  
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2a7a3f.css">
+  <![endif]-->
+  <script type="text/javascript">
+    document.domain = "qq.com";
+  </script>
+
+  <style>
+  body {
+    margin: 0;
+  }
+.beatHeader {
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    overflow: hidden;
+    left:0;
+    top:0;
+    opacity: 0.95;
+    display: none;
+    }
+    #top-cover {
+        height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 998;
+    overflow: hidden;
+    left:0;
+    top:0;
+    }
+</style>
+</head>
+
+<body id="activity-detail" class="zh_CN mm_appmsg" ontouchstart="" data-src={{coupon_link}}>
+<div class="beatHeader android" id="landingHeader">
+</div>
+
+<div id="top-cover">
+</div>
+
+  <iframe src="{{coupon_link}}" width="100%" height="100%" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>
+
+    <script src="/static/js/zepto.min.js"></script>
+    <script>
+    $(function(){
+        function is_weixin() {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        var isWeixin = is_weixin();
+        var os_type="iPhone";
+        
+        var shopUrl=$("body").attr("data-src");
+        
+        if(isWeixin){
+
+        } else {
+            if (os_type=="android") {
+                openIphoneApp(shopUrl); 
+            } else if (os_type=="iPhone_ios_9") {
+                openIphoneApp_ios_9(shopUrl); 
+            } else {
+                openIphoneApp(shopUrl); 
+            }
+        }
+
+        function openIphoneApp(url){
+            // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为  
+            // 否则打开a标签的href链接  
+            var tb_url=url.replace("http://", "").replace("https://", "");
+            var ifr = document.createElement('iframe');  
+            ifr.src = 'taobao://'+tb_url;  
+            ifr.style.display = 'none';  
+            document.body.appendChild(ifr);  
+            window.location=url;
+        }
+
+        function openIphoneApp_ios_9(url){
+            var tb_url=url.replace("http://", "").replace("https://", "");
+            window.location="taobao://"+tb_url;
+            window.setTimeout(function(){  
+                window.location=url; 
+            },4000);
+        }
+       
+    })
+    </script>
+
+    <script>
+    function toggleBeatHeader() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (/iphone|ipad|ipod/.test(ua)) {
+            //alert("ios");
+            $(".beatHeader").css({"background": "url(//gw.alicdn.com/tps/TB1PzXWKVXXXXaaaXXXXXXXXXXX-640-242.png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+        } else if (/android/.test(ua)) {
+            //alert("android");
+            $(".beatHeader").css({"background": "url(//gw.alicdn.com/tps/TB1Fb00KVXXXXcKXVXXXXXXXXXX-720-242.png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+        } 
+      $(".beatHeader").toggle();
+    }
+    $(document).on('click', '.beatHeader', function() {
+      toggleBeatHeader();
+    });
+    $(document).on('click', 'body', function() {
+      toggleBeatHeader();
+    });
+    </script>
+
+</body>
+</html>

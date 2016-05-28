@@ -103,7 +103,17 @@ class TaobaoHandler(BaseHandler):
                 self.render("tmall.html", **template_variables)  
         else:
             self.redirect(url)
-                
+
+
+class CouponHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        url = self.get_argument("url", "")
+        template_variables["coupon_link"] = url
+
+        if is_weixin_browser(self) or is_mobile_browser(self):
+            self.render("coupon.html", **template_variables)  
+        else:
+            self.redirect(url)
 
 
 class TaobaoPromptHandler(BaseHandler):

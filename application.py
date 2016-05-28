@@ -59,6 +59,7 @@ class Application(tornado.web.Application):
             (r"/baicai", handler.index.ListHandler),
             (r"/baicai/items", handler.index.GetListItemsHandler),
             (r"/item", handler.index.TaobaoHandler),
+            (r"/coupon", handler.index.CouponHandler),
             (r"/prompt", handler.index.TaobaoPromptHandler),
         ]
 
