@@ -99,19 +99,6 @@
       $(document).ready(function() {
 
     $("a").each(function() {
-        var text = $(this).text();
-        if (text.indexOf("优惠券")!=-1 || text.indexOf("优惠劵")!=-1 || 
-            text.indexOf("店铺券")!=-1 || text.indexOf("元券")!=-1 || 
-            text.indexOf("现金卷")!=-1 || text.indexOf("现金券")!=-1 ||
-            text.indexOf("元劵")!=-1 || text.indexOf("元优惠")!=-1 ||
-            text.indexOf("优惠卷") != -1) {
-            $(this).css({"color":"#f04848", 
-                "background-color":"#f5f5f5",
-                "border-radius":"2px",
-                "text-align":"center", 
-                "padding": "0 2px",
-                "margin-right": "2px"});
-
             var link = $(this).attr('href');
             var seller_id;
             var activity_id;
@@ -154,9 +141,18 @@
                 }
             }
 
-            //$(this).attr('href', 'http://djaa.cn/iphone_qiange_discount.php?shopUrl=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D'+seller_id+'%26activity_id%3D'+activity_id+'&shop_type=taobao&Advertisement=0&small_shop_type=discount');
+            if (seller_id != null) {
+              $(this).css({"color":"#f04848", 
+                "background-color":"#f5f5f5",
+                "border-radius":"2px",
+                "text-align":"center", 
+                "padding": "0 2px",
+                "margin-right": "2px"});
+
+              //$(this).attr('href', 'http://djaa.cn/iphone_qiange_discount.php?shopUrl=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D'+seller_id+'%26activity_id%3D'+activity_id+'&shop_type=taobao&Advertisement=0&small_shop_type=discount');
             $(this).attr('href', '/coupon?url=https%3A%2F%2Ftmall.m.taobao.com%2Fshop%2Fcoupon.htm%3Fseller_id%3D'+seller_id+'%26activity_id%3D'+activity_id+'&shop_type=taobao&Advertisement=0&small_shop_type=discount');
-        }
+            }
+        
     });
 });
     </script>
