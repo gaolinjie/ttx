@@ -61,3 +61,6 @@ static/thumb/
 *.xml
 *.iml
 *.pyc
+
+# node
+node_modules/
