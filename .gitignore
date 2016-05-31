@@ -64,3 +64,9 @@ static/thumb/
 
 # node
 node_modules/
+
+# gulp
+/static/dist
+/static/rev
+/templates/dist
+package.json
