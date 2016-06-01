@@ -70,3 +70,8 @@ node_modules/
 /static/rev
 /templates/dist
 package.json
+
+
+# scrapy
+ttxspider/.scrapy/
+ttxspider/ttxspider.log
