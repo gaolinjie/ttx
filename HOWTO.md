@@ -130,3 +130,23 @@ HOWTO deploy on Linode
 	# 列出 crontab 文件
 	$ crontab -r
 	# 删除 crontab 文件
+
+
+###Gulp
+####1. 安装nodejs
+	$ apt-get install nodejs
+	$ apt-get install npm
+####2. 全局安装gulp
+	$ apt-get install curl libcurl3 libcurl3-dev php5-curl
+	$ curl -sL https://deb.nodesource.com/setup | sudo bash -
+	$ apt-get install -y nodejs
+	$ npm install -g gulp
+####3. 项目npm初始化
+	$ npm init
+####4. 在项目中安装gulp
+	$ npm install --save-dev gulp
+####5. 安装相关gulp插件
+	$ npm install --save-dev gulp-minify-css
+####6. 编写gulpfile.js
+####7. 执行gulp
+	$ gulp
