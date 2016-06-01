@@ -48,7 +48,7 @@
           {{post.content|mp_content_process}}
 
           {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
-          <div style="margin-bottom: 18px;" align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process}}" /></a></div> 
+          <div style="margin-bottom: 18px;" align="center"><a href="{{post.dlink|mp_content_process}}"><img src="{{post.thumb|mp_content_process|img_content_process}}" /></a></div> 
           {%endif%}
 
           {%if post.post_type == "baicai" or post.subtitle.find("2016") == -1%}
