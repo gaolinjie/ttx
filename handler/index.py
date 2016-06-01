@@ -47,7 +47,7 @@ secret_key = "Ge61JJtUSC5myXVrntdVOqAZ5L7WpXR_Taa9C8vb"
 q = Auth(access_key, secret_key)
 bucket = BucketManager(q)
 
-DEBUG_FLAG = False
+DEBUG_FLAG = True
 if DEBUG_FLAG:
     static_path = "/static"
     template_path = ""
