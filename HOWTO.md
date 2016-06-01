@@ -134,8 +134,8 @@ HOWTO deploy on Linode
 
 ###Gulp
 ####1. 安装nodejs
-	$ apt-get install nodejs
-	$ apt-get install npm
+	$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -  
+	$ apt-get install -y nodejs  
 ####2. 全局安装gulp
 	$ apt-get install curl libcurl3 libcurl3-dev php5-curl
 	$ curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -144,6 +144,7 @@ HOWTO deploy on Linode
 ####3. 项目npm初始化
 	$ npm init
 ####4. 在项目中安装gulp
+	$ npm config set registry http://registry.npm.taobao.org 
 	$ npm install --save-dev gulp
 ####5. 安装相关gulp插件
 	$ npm install --save-dev gulp-minify-css
