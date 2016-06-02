@@ -58,6 +58,18 @@ class BaseHandler(tornado.web.RequestHandler):
     def post_model(self):
         return self.application.post_model
 
+    @property
+    def debug_flag(self):
+        return self.application.debug_flag
+
+    @property
+    def static_path(self):
+        return self.application.static_path
+
+    @property
+    def template_path(self):
+        return self.application.template_path
+
 '''
     @property
     def write_error(self, **kwargs):

@@ -48,14 +48,6 @@ q = Auth(access_key, secret_key)
 bucket = BucketManager(q)
 
 
-DEBUG_FLAG = False
-if DEBUG_FLAG:
-    static_path = "/static"
-    template_path = ""
-else:
-    static_path = "/static/dist"
-    template_path = "dist/"
-
 class IndexHandler(BaseHandler):
     def get(self, template_variables = {}):
         self.redirect("/baicai")
@@ -70,13 +62,13 @@ class PostHandler(BaseHandler):
             print post_id
             post = self.post_model.get_post_by_pid_and_source(post_id, source)
         template_variables["post"] = post
-        template_variables["static_path"] = static_path
-        self.render(template_path+"post.html", **template_variables)
+        template_variables["static_path"] = self.static_path
+        self.render(self.template_path+"post.html", **template_variables)
 
 class ListHandler(BaseHandler):
     def get(self, template_variables = {}):
-        template_variables["static_path"] = static_path
-        self.render(template_path+"list.html", **template_variables)
+        template_variables["static_path"] = self.static_path
+        self.render(self.template_path+"list.html", **template_variables)
 
 class GetListItemsHandler(BaseHandler):
     def get(self, template_variables = {}):
@@ -93,7 +85,7 @@ class TaobaoHandler(BaseHandler):
     def get(self, template_variables = {}):
         url = self.get_argument("url", "")
         template_variables["tmall_link"] = url
-        template_variables["static_path"] = static_path
+        template_variables["static_path"] = self.static_path
 
         if is_weixin_browser(self) or is_mobile_browser(self):
             tmall_pattern = re.compile(r'http://detail.tmall.com/item.htm?\S*id=(\d+)')
@@ -111,7 +103,7 @@ class TaobaoHandler(BaseHandler):
                 template_variables["title"] = title
                 template_variables["content"] = content
                 template_variables["sku"] = sku
-                self.render(template_path+"tmall.html", **template_variables)  
+                self.render(self.template_path+"tmall.html", **template_variables)  
         else:
             self.redirect(url)
 
@@ -120,10 +112,10 @@ class CouponHandler(BaseHandler):
     def get(self, template_variables = {}):
         url = self.get_argument("url", "")
         template_variables["coupon_link"] = url
-        template_variables["static_path"] = static_path
+        template_variables["static_path"] = self.static_path
 
         if is_weixin_browser(self) or is_mobile_browser(self):
-            self.render(template_path+"coupon.html", **template_variables)  
+            self.render(self.template_path+"coupon.html", **template_variables)  
         else:
             self.redirect(url)
 
