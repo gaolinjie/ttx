@@ -18,7 +18,6 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-import ConfigParser
 
 import handler.index
 
@@ -85,10 +84,8 @@ class Application(tornado.web.Application):
         # Have one global memcache controller
         self.mc = memcache.Client(["127.0.0.1:11211"])
 
-        cp = ConfigParser.SafeConfigParser()
-        cp.read('ttx.conf')
-        DEBUG_FLAG = cp.get('debug', 'debug_flag')
-        if DEBUG_FLAG == 'True':
+        DEBUG_FLAG = True
+        if DEBUG_FLAG:
             self.debug_flag = True
             self.static_path = "/static"
             self.template_path = ""
