@@ -156,8 +156,8 @@ class Filters():
         if None==content:
             return
         #content = re.sub(r'data-src', r'data-original', content)
-        content = re.sub(r'http://y.zdmimg.com/', r'http://www.zorhand.com/img?url=http://y.zdmimg.com/', content)
-        content = re.sub(r'http://ym.zdmimg.com/', r'http://www.zorhand.com/img?url=http://ym.zdmimg.com/', content)
+        content = re.sub(r'http://y.zdmimg.com/', r'http://www.rengzan.com/poimg.php?p=http://y.zdmimg.com/', content)
+        content = re.sub(r'http://ym.zdmimg.com/', r'http://www.rengzan.com/poimg.php?p=http://ym.zdmimg.com/', content)
 
         #content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl=\1', content)
         content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'/item?url=\1', content)
