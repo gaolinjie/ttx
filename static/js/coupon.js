@@ -47,10 +47,10 @@ $(function(){
         var ua = navigator.userAgent.toLowerCase();
         if (/iphone|ipad|ipod/.test(ua)) {
             //alert("ios");
-            $(".beatHeader").css({"background": "url(http://www.rengzan.com/poimg.php?p=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiadJoDmia9aj72G31exwmfKP4O9iaQOtsbXz5xZAEBdIfLotVibqCLtgAFcadoHnZqyN3hDlWOEmKQug/0?wx_fmt=png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+            $(".beatHeader").css({"background": "url(http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiadJoDmia9aj72G31exwmfKP4O9iaQOtsbXz5xZAEBdIfLotVibqCLtgAFcadoHnZqyN3hDlWOEmKQug/0?wx_fmt=png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
         } else if (/android/.test(ua)) {
             //alert("android");
-            $(".beatHeader").css({"background": "url(http://www.rengzan.com/poimg.php?p=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiadJoDmia9aj72G31exwmfKPPw8KrrCcMP5lNZjeibbvufSfyic1hh67Hm2nQHA3JfVsiaicCyjPhZiaW6A/0?wx_fmt=png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
+            $(".beatHeader").css({"background": "url(http://www.zorhand.com/img?url=https://mmbiz.qlogo.cn/mmbiz/P9UflgpqbtiadJoDmia9aj72G31exwmfKPPw8KrrCcMP5lNZjeibbvufSfyic1hh67Hm2nQHA3JfVsiaicCyjPhZiaW6A/0?wx_fmt=png) no-repeat #494A4D", "background-size": "contain", "background-position": "50% 50%"});
         } 
       $(".beatHeader").toggle();
     }
