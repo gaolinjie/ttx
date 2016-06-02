@@ -20,7 +20,6 @@ import os
 import requests
 import MySQLdb
 import helper
-import ConfigParser
 
 from base import *
 from lib.sendmail import send
@@ -48,11 +47,9 @@ secret_key = "Ge61JJtUSC5myXVrntdVOqAZ5L7WpXR_Taa9C8vb"
 q = Auth(access_key, secret_key)
 bucket = BucketManager(q)
 
-cp = ConfigParser.SafeConfigParser()
-cp.read('conf/ttx.conf')
-DEBUG_FLAG = cp.get('debug', 'debug_flag')
-print DEBUG_FLAG
-if DEBUG_FLAG == 'True':
+
+DEBUG_FLAG = False
+if DEBUG_FLAG:
     static_path = "/static"
     template_path = ""
 else:
