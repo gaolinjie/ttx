@@ -84,7 +84,7 @@ class Application(tornado.web.Application):
         # Have one global memcache controller
         self.mc = memcache.Client(["127.0.0.1:11211"])
 
-        DEBUG_FLAG = True
+        DEBUG_FLAG = False
         if DEBUG_FLAG:
             self.debug_flag = True
             self.static_path = "/static"
