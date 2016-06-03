@@ -79,8 +79,8 @@ class TtxSipder(CrawlSpider) :
 
         yield item
 
-        links = response.xpath('//div[@class="inner-block"]//a/@href').extract()
-        #texts = response.xpath('//div[@class="inner-block"]//a/text()').extract()
+        links = response.xpath('//div[@class="baoliao-block"]//a/@href').extract()
+        #texts = response.xpath('//div[@class="baoliao-block"]//a/text()').extract()
         index = 0
         for link in links:
             if index == len(links) -1:
