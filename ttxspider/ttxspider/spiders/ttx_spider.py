@@ -57,10 +57,8 @@ class TtxSipder(CrawlSpider) :
             item['pid'] = smzdm_match.group(1)
         item['title']  = response.xpath('//h1/a/em/text()').extract()
         item['subtitle']  = response.xpath('//h1/a/em/span[@class="red"]/text()').extract()
-        item['intro']  = response.xpath('//div[@class="inner-block"]/p[1]/text()').extract()
-        item['content']  = response.xpath('//div[@class="inner-block"]').extract()
-        if len(item['content']) == 0:
-            item['content'] = response.xpath('//div[@class="baoliao-block"]').extract()
+        item['intro']  = response.xpath('//div[@class="baoliao-block"]/p[1]/text()').extract()
+        item['content']  = response.xpath('//div[@class="item-preferential"]').extract()
         item['img']  = response.xpath('//a[@class="pic-Box"]/img/@src').extract()
         item['link']  = response.url
         item['dlink']  = response.xpath('//div[@class="buy"]/a/@href').extract()
