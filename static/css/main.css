@@ -158,13 +158,6 @@ span.rich_media_meta_nickname {
 	padding-left:10px;
 	border-left:3px solid #dbdbdb
 }
-img {
-	height:auto!important
-}
-@media(min-device-width:375px) and (max-device-width:667px) and (-webkit-min-device-pixel-ratio:2) {
-	.mm_appmsg .rich_media_inner,.mm_appmsg .rich_media_meta,.mm_appmsg .discuss_list,.mm_appmsg .rich_media_extra,.mm_appmsg .title_tips .tips {
-	font-size:17px
-}
 .mm_appmsg .meta_original_tag {
 	font-size:15px
 }
@@ -294,17 +287,8 @@ img {
 body {
     background-color: #ffffff;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    font-size: 16px;
-}
 i, em, address, cite {
     font-style: normal;
-}
-.rich_media_area_primary {
-    position: inherit;
-    padding: 20px 15px 15px;
-    background-color: #fff;
 }
 .list {
     font-size: 15px;
@@ -425,12 +409,6 @@ li {
 
 
 /*post.css*/
-body {
-    background-color: #ffffff;
-}
-img {
-  max-width: 100%;
-}
 p {
     margin-bottom: 16px;
     color: #444;
@@ -496,10 +474,6 @@ p {
     margin: 4px 10px 0 0;
 }
 
-i, em, address, cite {
-    font-style: normal;
-}
-
 .sitePrice .red {
     font-size: 16px;
     font-weight: bold;
@@ -519,11 +493,6 @@ i, em, address, cite {
     margin-top: 5px;
     display: block;
     overflow: hidden;
-}
-.rich_media {
-    max-width: 740px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .btn {
     display: inline-block;
@@ -552,4 +521,8 @@ i, em, address, cite {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
+}
+
+img {
+  max-width: 100%;
 }
