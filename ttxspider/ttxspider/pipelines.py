@@ -13,6 +13,7 @@ import MySQLdb.cursors
 import os
 import uuid
 import time
+import re
 
 from qiniu import Auth
 from qiniu import BucketManager
@@ -57,10 +58,10 @@ class TtxspiderPipeline(object):
 		else:
 			if  len(item['content']) == 0:
 				item['content'].append("")
-			if  len(item['intro']) == 0:
-				item['intro'].append("")
 			if 	len(item['dlink']) == 0:
 				item['dlink'].append("/")
+
+			processed_content = self.mp_content_process(item['content'][0])
 
 			author_name = item['author_name'][0]
 			if author_name != "":
@@ -73,8 +74,27 @@ class TtxspiderPipeline(object):
 				created = time.strftime('%Y-%m-%d ') + created + ":00"
 			print created
 			tx.execute(\
-				"insert into post (pid, title, subtitle, content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
-				(item['pid'], item['title'][0], item['subtitle'][0], item['content'][0], item['post_type'], item['img'][0], item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], author_name, item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))
+				"insert into post (pid, title, subtitle, content, processed_content, post_type, thumb, link, dlink, source, price, vendor, author_name, up_num, down_num, reply_num, follow_num, created) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
+				(item['pid'], item['title'][0], item['subtitle'][0], item['content'][0], processed_content, item['post_type'], item['img'][0], item['link'], item['dlink'][0], source, item['subtitle'][0], item['vendor'][0], author_name, item['up_num'][0], item['down_num'][0], item['reply_num'][0], item['follow_num'][0], created))
 
 	def handle_error(self, e):
 		print e
+
+	def mp_content_process(self, content):
+		if None==content:
+			return
+        #content = re.sub(r'data-src', r'data-original', content)
+		content = re.sub(r'http://y.zdmimg.com/', r'http://www.zorhand.com/img?url=http://y.zdmimg.com/', content)
+		content = re.sub(r'http://ym.zdmimg.com/', r'http://www.zorhand.com/img?url=http://ym.zdmimg.com/', content)
+
+		#content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl=\1', content)
+		content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'/item?url=\1', content)
+		content = re.sub(r'http://www.smzdm.com/p/([0-9]{7})/', r'/p/\1?source=smzdm', content)
+
+		content = re.sub(u'\u503c\u53cb\u7206\u6599\u539f\u6587', u'\u767d\u83dc\u63a8\u8350\u7406\u7531\uff1a', content)
+		content = re.sub(u'\u767d\u83dc\u5c0f\u7a9d', u'\u767d\u83dc\u670b\u53cb\u5708', content)
+		content = re.sub(r'http://faxian.smzdm.com/9kuai9/', r'/baicai', content)
+		content = re.sub(r'http://www.smzdm.com/tag/%E6%AF%8F%E6%97%A5%E7%99%BD%E8%8F%9C/faxian/', r'/baicai', content)
+        
+        #content = content.replace(u'\u65f6\u95f4\uff1a', u'')
+		return content

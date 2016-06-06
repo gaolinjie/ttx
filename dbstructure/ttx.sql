@@ -39,6 +39,7 @@ CREATE TABLE `post` (
   `reply_num` text,
   `follow_num` text,
   `content` longtext,
+  `processed_content` longtext,
   `author_id` text,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,

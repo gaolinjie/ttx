@@ -57,7 +57,6 @@ class TtxSipder(CrawlSpider) :
             item['pid'] = smzdm_match.group(1)
         item['title']  = response.xpath('//h1/em/text()').extract()
         item['subtitle']  = response.xpath('//h1/em/span[@class="red"]/text()').extract()
-        item['intro']  = response.xpath('//div[@class="baoliao-block"]/p[1]/text()').extract()
         item['content']  = response.xpath('//div[@class="item-box item-preferential"]').extract()
         item['img']  = response.xpath('//a[@class="pic-Box"]/img/@src').extract()
         item['link']  = response.url
@@ -77,7 +76,7 @@ class TtxSipder(CrawlSpider) :
 
         yield item
 
-        links = response.xpath('//div[@class="baoliao-block"]//a/@href').extract()
+        links = response.xpath('//div[@class="item-box item-preferential"]//a/@href').extract()
         #texts = response.xpath('//div[@class="baoliao-block"]//a/text()').extract()
         index = 0
         for link in links:
