@@ -83,7 +83,6 @@ class TtxspiderPipeline(object):
 	def mp_content_process(self, content):
 		if None==content:
 			return
-        #content = re.sub(r'data-src', r'data-original', content)
 		content = re.sub(r'http://y.zdmimg.com/', r'http://www.zorhand.com/img?url=http://y.zdmimg.com/', content)
 		content = re.sub(r'http://ym.zdmimg.com/', r'http://www.zorhand.com/img?url=http://ym.zdmimg.com/', content)
 
@@ -95,8 +94,7 @@ class TtxspiderPipeline(object):
 		content = re.sub(u'\u767d\u83dc\u5c0f\u7a9d', u'\u767d\u83dc\u670b\u53cb\u5708', content)
 		content = re.sub(r'http://faxian.smzdm.com/9kuai9/', r'/baicai', content)
 		content = re.sub(r'http://www.smzdm.com/tag/%E6%AF%8F%E6%97%A5%E7%99%BD%E8%8F%9C/faxian/', r'/baicai', content)
-        content = re.sub(r'_d200.jpg', r'_a120.jpg', content)
-        content = re.sub(r'_e600.jpg', r'_d480.jpg', content)
+		content = re.sub(r'_d200.jpg', r'_a120.jpg', content)
+		content = re.sub(r'_e600.jpg', r'_d480.jpg', content)
 
-        #content = content.replace(u'\u65f6\u95f4\uff1a', u'')
 		return content
