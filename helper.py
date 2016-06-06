@@ -31,6 +31,7 @@ class Filters():
         self.jinja2.filters["mp_content_process"] = self.mp_content_process
         self.jinja2.filters["tmall_content_process"] = self.tmall_content_process
         self.jinja2.filters["img_content_process"] = self.img_content_process
+        self.jinja2.filters["list_content_process"] = self.list_content_process
         self.jinja2.filters["markdown"] = self.markdown
         return self.jinja2
 
@@ -167,13 +168,22 @@ class Filters():
         content = re.sub(r'白菜小窝'.decode("utf8"), r'白菜朋友圈', content)
         content = re.sub(r'http://faxian.smzdm.com/9kuai9/', r'/baicai', content)
         content = re.sub(r'http://www.smzdm.com/tag/%E6%AF%8F%E6%97%A5%E7%99%BD%E8%8F%9C/faxian/', r'/baicai', content)
+        content = re.sub(r'_d200.jpg', r'_a120.jpg', content)
+        content = re.sub(r'_e600.jpg', r'_d480.jpg', content)
         
         return content
 
     def img_content_process(self, content):
         if None==content:
             return
-        content = re.sub(r'.jpg_d250.jpg', r'.jpg_d480.jpg', content)
+        content = re.sub(r'_d250.jpg', r'_d480.jpg', content)
+
+        return content
+
+    def list_content_process(self, content):
+        if None==content:
+            return
+        content = re.sub(r'_d250.jpg', r'_a120.jpg', content)
 
         return content
 
