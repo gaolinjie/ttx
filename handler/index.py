@@ -55,11 +55,11 @@ class IndexHandler(BaseHandler):
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         source = self.get_argument("source", "")
-        print source
         if (source == ""):
             post = self.post_model.get_post_by_id(post_id)
         else:
-            print post_id
+            if (source == "s"):
+                source = "smzdm"
             post = self.post_model.get_post_by_pid_and_source(post_id, source)
         template_variables["post"] = post
         template_variables["static_path"] = self.static_path

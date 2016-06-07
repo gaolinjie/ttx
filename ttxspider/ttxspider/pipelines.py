@@ -88,7 +88,7 @@ class TtxspiderPipeline(object):
 
 		#content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'http://djaa.cn/cm_details.php?shop_type=tmall&Advertisement=0&small_shop_type=cm_details&shopUrl=\1', content)
 		content = re.sub(r'([a-zA-z]+://[^\s]*.tmall.com[^\s]*)(\s*)', r'/item?url=\1', content)
-		content = re.sub(r'http://www.smzdm.com/p/([0-9]{7})/', r'/p/\1?source=smzdm', content)
+		content = re.sub(r'http://www.smzdm.com/p/([0-9]{7})/', r'/p/\1?source=s', content)
 
 		content = re.sub(u'\u503c\u53cb\u7206\u6599\u539f\u6587', u'\u767d\u83dc\u63a8\u8350\u7406\u7531\uff1a', content)
 		content = re.sub(u'\u767d\u83dc\u5c0f\u7a9d', u'\u767d\u83dc\u670b\u53cb\u5708', content)
