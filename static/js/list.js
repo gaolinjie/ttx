@@ -15,7 +15,7 @@ $(function(){
 
                     var result = '';
                     for(var i = 0; i < data.list.length; i++){
-                        result += '<li><a href="/p/'+data.list[i].pid+'?source=s" target="_blank" class="hidden openApp"><div class="image_wrap"><div class="image"><img src="http://www.zorhand.com/img?url='+data.list[i].thumb+'" alt="'+data.list[i].title+'"></div></div><address><span>'+data.list[i].created+'</span>'+data.list[i].vendor+'</address><h2>'+data.list[i].title+'</h2><div class="tips"><em>'+data.list[i].subtitle+'</em></div></a></li>';
+                        result += '<li><a href="/p/'+data.list[i].pid+'?source=s" target="_blank" class="hidden openApp"><div class="image_wrap"><div class="image"><img src="http://www.rengzan.com/poimg.php?p='+data.list[i].thumb+'" alt="'+data.list[i].title+'"></div></div><address><span>'+data.list[i].created+'</span>'+data.list[i].vendor+'</address><h2>'+data.list[i].title+'</h2><div class="tips"><em>'+data.list[i].subtitle+'</em></div></a></li>';
                     }
 
                         $('.list').append(result);
